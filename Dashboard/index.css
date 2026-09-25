@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F5F7F2;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+/*----- Header Styling -----*/
+header {
+    background-color: #3A7D44;
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* 3 Kolom seimbang */
+    align-items: center;
+    margin-left: -110px;
+}
+
+.header h2.nama-brand {
+    color: #E8F0E2; 
+    font-size: 1.75rem;
+    justify-self: start; /* Rata kiri */
+    margin-left: -170px; /* Memberikan jarak dari tepi kiri */
+}
+
+.nav-main {
+    display: flex;
+    gap: 40px;
+    justify-self: center; /* Presisi tepat di tengah layar */
+}
+
+.nav-main button {
+    background: transparent;
+    border: none;
+    color: #E8F0E2;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.nav-login {
+    display: flex;
+    justify-self: end;
+    gap: 30px; 
+    margin-right: -300px; /* Memberikan jarak dari tepi kanan */
+}
+
+.nav-login button {
+    background: transparent;
+    border: none;
+    color: #E8F0E2;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.nav-login .btn-daftar {
+    background-color: #E8F0E2;
+    color: #3A7D44;
+    padding: 8px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
