@@ -1,0 +1,91 @@
+/* =========================================
+   LetCycle Marketplace — responsive.css
+   ========================================= */
+
+/* ===== TABLET (<= 1024px) ===== */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 16px 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .navbar__search {
+    order: 3;
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+
+  .hero {
+    padding: 40px 24px;
+    flex-direction: column;
+  }
+
+  .hero__content {
+    max-width: 100%;
+  }
+
+  .hero__image {
+    min-height: 260px;
+  }
+
+  .categories,
+  .products {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .products__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== MOBILE (<= 640px) ===== */
+@media (max-width: 640px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar__menu {
+    order: 2;
+    gap: 18px;
+  }
+
+  .navbar__search {
+    order: 3;
+  }
+
+  .navbar__actions {
+    order: 1;
+    align-self: flex-end;
+    margin-top: -40px;
+  }
+
+  .hero__title {
+    font-size: 1.7rem;
+  }
+
+  .hero__features {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero__feature {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .categories__list {
+    gap: 10px;
+  }
+
+  .category-pill {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+
+  .products__grid {
+    grid-template-columns: 1fr;
+  }
+}
