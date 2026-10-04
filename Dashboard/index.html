@@ -1,59 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LetsCycle</title>
+    <meta name="theme-color" content="#3A7D44">
+    <meta name="description" content="Kelola setoran sampah dan dukung produk daur ulang bersama LetCycle.">
+    <title>Dashboard | LetCycle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/css/style.css">
+    <script src="src/js/script.js" defer></script>
 </head>
-
-<body> 
-
-    <header>
-        <div class = "container">
-            <div class = "header">
-                <h2 class = "nama-brand"> LetsCycle </h2>
-
-                <nav class = "nav-main">
-                    <button class = "btn-home">Home</button>
-                    <button class = "btn-map">Map</button>
-                    <button class = "btn-marketplace">Marketplace</button>
-                </nav>
-
-                <nav class = "nav-login">
-                    <button class = "btn-masuk">Masuk</button>
-                    <button class = "btn-daftar">Daftar</button>
-                </nav>
+<body>
+    <!-- Navigasi utama -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a class="brand" href="#" aria-label="LetCycle, halaman utama">
+                <span class="brand-mark" aria-hidden="true">↻</span>
+                <span>Let<span>Cycle</span></span>
+            </a>
+            <nav class="main-nav" aria-label="Navigasi utama">
+                <a class="nav-link is-active" href="#" aria-current="page">Home</a>
+                <a class="nav-link" href="#">Marketplace</a>
+                <a class="nav-link" href="#">Maps</a>
+            </nav>
+            <div class="user-profile">
+                <span class="profile-avatar" aria-hidden="true">A</span>
+                <span class="profile-name">Alya</span>
+                <span class="profile-chevron" aria-hidden="true">⌄</span>
             </div>
         </div>
     </header>
 
     <main>
-       <section class="dashboard-top">
-            <img src="Asset/image/Dashboard_Gif.gif" alt="Dashboard GIF">
-            <div class="dashboard-title">
-                <h1>Ubah Sampah</h1>
-                <h1>Menjadi Uang</h1>
+        <!-- Hero dengan GIF latar -->
+        <section class="hero" aria-labelledby="hero-title">
+            <img class="hero-image" src="assets/dashboard-gif.gif" alt="" fetchpriority="high">
+            <div class="hero-shade"></div>
+            <div class="hero-content">
+                <p class="eyebrow hero-eyebrow">Langkah kecil, dampak besar</p>
+                <h1 id="hero-title">Ubah Sampah<br>Menjadi Uang</h1>
+                <p class="hero-description">Pilah sampah dari rumah, setor dengan mudah, dan dapatkan nilai dari setiap langkah kecil untuk bumi yang lebih bersih.</p>
+                <a class="button button-primary hero-button" href="#">Mulai Setor Sampah <span aria-hidden="true">→</span></a>
             </div>
-            <div class="dashboard-subtitle">
-                <p> Mulai langkah kecil untuk bumi yang lebih bersih sekaligus dapatkan penghasilan tambahan.
-                    LetCycle memudahkanmu mengelola limbah daur ulang dari rumah. Cukup pilah barang bekasmu,
-                    atur jadwal penjemputan dengan kurir,
-                    dan pantau saldo yang terus bertambah langsung dari layar ini.
-                    Bersama, kita wujudkan gaya hidup berkelanjutan yang menguntungkan 
-                </p>
-            </div>
-
-            <nav class = "CTA-1">
-                <button class = "btn-lihat-cara-kerja">Lihat Cara Kerja</button>
-            </nav>
+            <span class="hero-scroll-hint" aria-hidden="true">↓</span>
         </section>
-    
-    <br>
-    <h4> Web sederhana untuk kebiasaan yang lebih baik </h4>
-    <p> LetsCycle membantu warga memilah dan menyetor sampah rumah tangga tanpa ribet, 
-        sambil tetap mendapat nilai balik dari setiap kilogram yang dipilah. </p>  
+
+        <!-- Ringkasan statistik setoran -->
+        <section class="stats-section" aria-labelledby="stats-title">
+            <div class="stats-card content-width">
+                <div class="section-heading stats-heading">
+                    <p class="eyebrow">Perjalanan baikmu</p>
+                    <h2 id="stats-title">Dompet yang sudah terkumpul</h2>
+                    <p>Setiap setoran membawa perubahan untuk lingkungan.</p>
+                </div>
+                <div class="stats-grid">
+                    <article class="stat-item">
+                        <span class="stat-icon icon-leaf" aria-hidden="true">♧</span>
+                        <div><p>Total sampah terkumpul</p><strong>24,8 <small>kg</small></strong></div>
+                        <span class="stat-note">↑ 12% bulan ini</span>
+                    </article>
+                    <article class="stat-item">
+                        <span class="stat-icon icon-wallet" aria-hidden="true">Rp</span>
+                        <div><p>Saldo dompet</p><strong>Rp 185.000</strong></div>
+                        <span class="stat-note">Siap digunakan</span>
+                    </article>
+                    <article class="stat-item">
+                        <span class="stat-icon icon-box" aria-hidden="true">▣</span>
+                        <div><p>Jumlah setoran</p><strong>8 <small>kali</small></strong></div>
+                        <span class="stat-note">Terus konsisten!</span>
+                    </article>
+                    <article class="stat-item">
+                        <span class="stat-icon icon-co2" aria-hidden="true">CO₂</span>
+                        <div><p>Jejak karbon dicegah</p><strong>16,2 <small>kg</small></strong></div>
+                        <span class="stat-note">Bumi berterima kasih</span>
+                    </article>
+                </div>
+            </div>
+            <div class="stats-wave" aria-hidden="true"></div>
+        </section>
+
+        <div class="page-content">
+            <!-- Tips memilah sampah -->
+            <section class="tips-section content-width" aria-labelledby="tips-title">
+                <div class="section-heading">
+                    <p class="eyebrow">Mulai dari rumah</p>
+                    <h2 id="tips-title">Pilah sampah untuk lingkungan yang lebih hijau</h2>
+                    <p>Kebiasaan sederhana yang membuat setoranmu lebih bermanfaat.</p>
+                </div>
+                <div class="tips-list">
+                    <article class="tip-item">
+                        <span class="tip-icon" aria-hidden="true">⌕</span>
+                        <div><h3>Kenali jenis sampah</h3><p>Pisahkan sampah yang dapat didaur ulang dari sisa makanan dan sampah lainnya.</p></div>
+                    </article>
+                    <article class="tip-item">
+                        <span class="tip-icon" aria-hidden="true">⌑</span>
+                        <div><h3>Bersihkan sebelum disetor</h3><p>Bilas botol dan wadah bekas agar tetap bersih serta mudah diproses kembali.</p></div>
+                    </article>
+                    <article class="tip-item">
+                        <span class="tip-icon" aria-hidden="true">♧</span>
+                        <div><h3>Simpan dengan rapi</h3><p>Pastikan sampah kering dan terkumpul di tempat yang aman hingga jadwal setoran.</p></div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Informasi kampanye lingkungan -->
+            <section class="campaign-card content-width" aria-labelledby="campaign-title">
+                <div class="campaign-symbol" aria-hidden="true">✳</div>
+                <div>
+                    <p class="eyebrow">Dampak baik bersama</p>
+                    <h2 id="campaign-title">Kampanye ini penting</h2>
+                    <p>Sampah plastik membutuhkan waktu sangat lama untuk terurai. Dengan memilah dan menyetorkannya, kita membantu mengurangi pencemaran, memberi kehidupan baru pada material, dan menjaga lingkungan untuk generasi berikutnya.</p>
+                </div>
+            </section>
+
+            <!-- Daftar kategori dan nilai sampah -->
+            <section class="categories-section content-width" aria-labelledby="categories-title">
+                <div class="section-heading">
+                    <p class="eyebrow">Setor dan dapatkan nilai</p>
+                    <h2>Kategori sampah yang diterima</h2>
+                    <p>Pilih material yang sudah kamu pilah untuk mulai mengumpulkan saldo.</p>
+                </div>
+                <div class="category-grid">
+                    <article class="category-card">
+                        <span class="category-icon category-plastic" aria-hidden="true">♧</span>
+                        <div><h3>Plastik botol</h3><p>Botol PET bersih dan kering</p></div>
+                        <strong>Rp 3.000<span>/kg</span></strong>
+                    </article>
+                    <article class="category-card">
+                        <span class="category-icon category-paper" aria-hidden="true">▤</span>
+                        <div><h3>Kertas &amp; kardus</h3><p>Kertas, koran, dan kardus</p></div>
+                        <strong>Rp 2.000<span>/kg</span></strong>
+                    </article>
+                    <article class="category-card">
+                        <span class="category-icon category-can" aria-hidden="true">▥</span>
+                        <div><h3>Kaleng aluminium</h3><p>Kaleng minuman tanpa isi</p></div>
+                        <strong>Rp 8.000<span>/kg</span></strong>
+                    </article>
+                    <article class="category-card">
+                        <span class="category-icon category-glass" aria-hidden="true">◇</span>
+                        <div><h3>Botol kaca</h3><p>Botol kaca utuh dan bersih</p></div>
+                        <strong>Rp 1.500<span>/kg</span></strong>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Galeri kegiatan dengan carousel -->
+            <section class="gallery-section content-width" aria-labelledby="gallery-title">
+                <div class="gallery-heading">
+                    <div class="section-heading">
+                        <p class="eyebrow">Cerita dari komunitas</p>
+                        <h2>Kegiatan LetCycle</h2>
+                        <p>Langkah kecil kita sedang membuat perubahan besar.</p>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-button" type="button" data-carousel-direction="previous" aria-label="Lihat kegiatan sebelumnya">←</button>
+                        <button class="carousel-button" type="button" data-carousel-direction="next" aria-label="Lihat kegiatan berikutnya">→</button>
+                    </div>
+                </div>
+                <div class="gallery-track" id="gallery-track" aria-label="Galeri kegiatan LetCycle">
+                    <article class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Relawan memilah sampah untuk didaur ulang" loading="lazy">
+                        <div class="gallery-caption"><span>Aksi komunitas</span><h3>Pilah bersama, mulai dari sekitar</h3></div>
+                    </article>
+                    <article class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Botol plastik yang siap dikumpulkan dan didaur ulang" loading="lazy">
+                        <div class="gallery-caption"><span>Setor sampah</span><h3>Setiap botol punya kesempatan kedua</h3></div>
+                    </article>
+                    <article class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Lingkungan hijau yang dijaga bersama" loading="lazy">
+                        <div class="gallery-caption"><span>Jaga bumi</span><h3>Lingkungan bersih untuk masa depan</h3></div>
+                    </article>
+                    <article class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Anak-anak ikut merawat lingkungan dan masa depan" loading="lazy">
+                        <div class="gallery-caption"><span>Generasi hijau</span><h3>Menjaga bumi untuk generasi berikutnya</h3></div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Ajakan untuk bergabung -->
+            <section class="cta-card content-width" aria-labelledby="cta-title">
+                <span class="cta-decoration cta-decoration-one" aria-hidden="true"></span>
+                <span class="cta-decoration cta-decoration-two" aria-hidden="true"></span>
+                <p class="eyebrow">Saatnya bergerak bersama</p>
+                <h2 id="cta-title">Jadikan sampah bernilai</h2>
+                <p>Mulai pilah sampahmu hari ini dan jadi bagian dari perubahan untuk bumi yang lebih baik.</p>
+                <a class="button cta-button" href="#">Mulai Sekarang <span aria-hidden="true">→</span></a>
+            </section>
+        </div>
     </main>
 
+    <!-- Informasi dan tautan footer -->
+    <footer class="site-footer">
+        <div class="footer-content content-width">
+            <div class="footer-about">
+                <a class="brand footer-brand" href="#"><span class="brand-mark" aria-hidden="true">↻</span><span>Let<span>Cycle</span></span></a>
+                <p>Menghubungkan kebiasaan baik dengan masa depan yang lebih hijau. Pilah, setor, dan tumbuh bersama LetCycle.</p>
+                <div class="social-links" aria-label="Media sosial">
+                    <a href="#" aria-label="Instagram">ig</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="TikTok">♪</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div><h2>Jelajahi</h2><a href="#">Home</a><a href="#">Marketplace</a><a href="#">Maps</a></div>
+                <div><h2>Bantuan</h2><a href="#">Cara kerja</a><a href="#">Tentang kami</a><a href="#">Hubungi kami</a></div>
+            </div>
+        </div>
+        <div class="footer-bottom content-width">
+            <p>© 2025 LetCycle. Bersama menjaga bumi tetap lestari.</p>
+            <span>Dibuat dengan kepedulian untuk bumi <span aria-hidden="true">♡</span></span>
+        </div>
+    </footer>
 </body>
 </html>
