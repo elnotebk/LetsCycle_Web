@@ -11,6 +11,7 @@ const dataDirectory = path.join(projectRoot, "data");
 const usersFile = path.join(dataDirectory, "users.txt");
 const port = Number(process.env.PORT) || 3000;
 const maximumBodySize = 8 * 1024;
+const apiPaths = new Set(["/api/test/register", "/api/test/login"]);
 const contentTypes = new Map([
     [".css", "text/css; charset=utf-8"],
     [".gif", "image/gif"],
@@ -56,6 +57,31 @@ function sendJson(response, statusCode, payload) {
         "Cache-Control": "no-store",
     });
     response.end(JSON.stringify(payload));
+}
+
+/** Allows browser requests only from local HTTP development servers. */
+function setLocalCorsHeaders(request, response) {
+    const origin = request.headers.origin;
+    if (!origin) return true;
+
+    let parsedOrigin;
+    try {
+        parsedOrigin = new URL(origin);
+    } catch {
+        return false;
+    }
+
+    if (parsedOrigin.protocol !== "http:" ||
+        !["localhost", "127.0.0.1", "[::1]"].includes(parsedOrigin.hostname)) {
+        return false;
+    }
+
+    response.setHeader("Access-Control-Allow-Origin", origin);
+    response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+    response.setHeader("Access-Control-Allow-Headers", "Accept, Content-Type");
+    response.setHeader("Access-Control-Max-Age", "600");
+    response.setHeader("Vary", "Origin");
+    return true;
 }
 
 /** Reads a small JSON request body and rejects oversized or invalid payloads. */
@@ -220,6 +246,17 @@ async function serveStatic(request, response, pathname) {
 const server = createServer(async (request, response) => {
     try {
         const url = new URL(request.url, `http://${request.headers.host || "localhost"}`);
+        if (apiPaths.has(url.pathname)) {
+            if (!setLocalCorsHeaders(request, response)) {
+                sendJson(response, 403, { ok: false, pesan: "Asal permintaan tidak diizinkan." });
+                return;
+            }
+            if (request.method === "OPTIONS") {
+                response.writeHead(204);
+                response.end();
+                return;
+            }
+        }
         if (request.method === "POST" && url.pathname === "/api/test/register") {
             await registerTestUser(request, response);
             return;

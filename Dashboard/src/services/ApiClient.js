@@ -1,7 +1,13 @@
-/** Wraps same-origin JSON requests to the local frontend test server. */
+/** Uses the project server directly when the frontend runs on another local server. */
+function getDefaultBaseUrl() {
+    if (window.location.port === "3000") return "/api/test";
+    return "http://127.0.0.1:3000/api/test";
+}
+
+/** Wraps JSON requests to the local frontend test server. */
 export class ApiClient {
     /** Creates an API client with an optional base URL. */
-    constructor(baseUrl = "/api/test") {
+    constructor(baseUrl = getDefaultBaseUrl()) {
         this.baseUrl = baseUrl.replace(/\/$/, "");
     }
 
@@ -24,14 +30,13 @@ export class ApiClient {
         try {
             response = await fetch(`${this.baseUrl}${path}`, {
                 ...options,
-                credentials: "include",
                 headers: {
                     Accept: "application/json",
                     ...options.headers,
                 },
             });
         } catch {
-            throw new Error("Tidak dapat terhubung ke server. Periksa koneksi lalu coba lagi.");
+            throw new Error("Tidak dapat terhubung ke server API. Pastikan server LetCycle aktif dengan menjalankan npm start.");
         }
 
         let result;
@@ -39,7 +44,7 @@ export class ApiClient {
             result = await response.json();
         } catch {
             throw new Error(
-                "Server tidak mengenali endpoint uji frontend. Hentikan server lama, lalu jalankan npm start kembali.",
+                "Server API mengirim respons yang tidak valid. Pastikan npm start dijalankan dari folder proyek LetCycle.",
             );
         }
 
