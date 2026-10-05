@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3A7D44">
+    <meta name="description" content="Daftar LetCycle dan mulai mengubah sampah menjadi dampak baik.">
+    <title>Daftar | LetCycle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <script type="module" src="RegisterPage.js"></script>
+    <script type="module" src="../component/NavbarComponent.js"></script>
+</head>
+
+<body class="auth-page">
+    <header class="site-header">
+        <div class="nav-container">
+            <a class="brand" href="../../index.html" aria-label="LetCycle, halaman utama">
+                <span>Let<span>Cycle</span></span>
+            </a>
+            <nav class="main-nav" aria-label="Navigasi utama">
+                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="#">Lokasi Penukaran</a>
+                <a class="nav-link" href="#">Marketplace</a>
+            </nav>
+            <div class="auth-actions" data-navbar-auth></div>
+        </div>
+    </header>
+
+    <main class="auth-main">
+        <section class="auth-card auth-card-register" aria-labelledby="register-title">
+            <div class="auth-card-heading">
+                <p class="eyebrow">Mulai langkah baikmu</p>
+                <h1 id="register-title">Bergabung dengan LetCycle</h1>
+                <p>Buat akun dan tumbuh bersama komunitas yang peduli bumi.</p>
+            </div>
+            <form class="auth-form" id="register-form" novalidate>
+                <div class="form-field">
+                    <label for="register-name">Nama lengkap</label>
+                    <input id="register-name" name="nama" type="text" autocomplete="name" minlength="2" maxlength="60" placeholder="Nama lengkapmu" required>
+                    <span class="field-error" id="register-name-error" data-field-error="nama"></span>
+                </div>
+                <div class="form-field">
+                    <label for="register-email">Email</label>
+                    <input id="register-email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="nama@email.com" required>
+                    <span class="field-error" id="register-email-error" data-field-error="email"></span>
+                </div>
+                <div class="form-field">
+                    <label for="register-password">Password</label>
+                    <div class="input-wrap">
+                        <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" placeholder="Minimal 8 karakter" required>
+                        <button class="password-toggle" type="button" data-toggle-password="register-password" aria-label="Tampilkan password">Tampilkan</button>
+                    </div>
+                    <span class="field-error" id="register-password-error" data-field-error="password"></span>
+                </div>
+                <div class="form-field">
+                    <label for="register-confirm-password">Konfirmasi password</label>
+                    <div class="input-wrap">
+                        <input id="register-confirm-password" name="konfirmasiPassword" type="password" autocomplete="new-password" maxlength="128" placeholder="Ulangi password" required>
+                        <button class="password-toggle" type="button" data-toggle-password="register-confirm-password" aria-label="Tampilkan password">Tampilkan</button>
+                    </div>
+                    <span class="field-error" id="register-confirm-password-error" data-field-error="konfirmasiPassword"></span>
+                </div>
+                <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+                <button class="auth-submit" type="submit">Daftar</button>
+            </form>
+            <p class="auth-switch">Sudah punya akun? <a href="login.html">Masuk</a></p>
+            <p class="auth-security-note">
+                Mode uji lokal: password disimpan sebagai hash, bukan teks asli.
+            </p>
+        </section>
+    </main>
+</body>
+
+</html>

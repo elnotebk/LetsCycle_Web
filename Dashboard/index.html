@@ -11,7 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/css/style.css">
-    <script src="src/js/script.js" defer></script>
+    <script type="module" src="src/component/DashboardInteractions.js"></script>
+    <script type="module" src="src/component/NavbarComponent.js"></script>
 </head>
 
 <body>
@@ -23,13 +24,10 @@
             </a>
             <nav class="main-nav" aria-label="Navigasi utama">
                 <a class="nav-link is-active" href="#" aria-current="page">Home</a>
-                <a class="nav-link" href="#">Map</a>
+                <a class="nav-link" href="#">Lokasi Penukaran</a>
                 <a class="nav-link" href="#">Marketplace</a>
             </nav>
-            <div class="auth-actions">
-                <a class="login-link" href="#">Masuk</a>
-                <a class="register-link" href="#">Daftar</a>
-            </div>
+            <div class="auth-actions" data-navbar-auth></div>
         </div>
     </header>
 
@@ -110,17 +108,44 @@
                     <p>Kebiasaan sederhana yang membuat setoranmu lebih bermanfaat.</p>
                 </div>
                 <div class="tips-list">
-                    <article class="tip-item">
-                        <span class="tip-icon" aria-hidden="true">⌕</span>
-                        <div><h3>Kenali jenis sampah</h3><p>Pisahkan sampah yang dapat didaur ulang dari sisa makanan dan sampah lainnya.</p></div>
+                    <article class="tip-item tip-item-sort">
+                        <div class="tip-card-top">
+                            <span class="tip-icon" aria-hidden="true">
+                                <svg viewBox="0 0 48 48"><path d="M10 14h28M14 24h20M19 34h10"/><circle cx="17" cy="14" r="3"/><circle cx="30" cy="24" r="3"/><circle cx="23" cy="34" r="3"/></svg>
+                            </span>
+                            <span class="tip-index">01 <span>/ PILAH</span></span>
+                        </div>
+                        <div class="tip-copy">
+                            <h3>Kenali jenis sampah</h3>
+                            <p>Pisahkan material yang bisa didaur ulang dari sampah sisa makanan.</p>
+                        </div>
+                        <div class="tip-example"><span class="tip-check" aria-hidden="true">✓</span><span><strong>Contoh:</strong> botol PET, kardus, dan kaleng</span></div>
                     </article>
-                    <article class="tip-item">
-                        <span class="tip-icon" aria-hidden="true">⌑</span>
-                        <div><h3>Bersihkan sebelum disetor</h3><p>Bilas botol dan wadah bekas agar tetap bersih serta mudah diproses kembali.</p></div>
+                    <article class="tip-item tip-item-clean">
+                        <div class="tip-card-top">
+                            <span class="tip-icon" aria-hidden="true">
+                                <svg viewBox="0 0 48 48"><path d="M18 10h12v5l4 4v18H14V19l4-4zM18 15h12M14 24h20"/><path d="M24 28v5m-3-3 3 3 3-3"/></svg>
+                            </span>
+                            <span class="tip-index">02 <span>/ BERSIHKAN</span></span>
+                        </div>
+                        <div class="tip-copy">
+                            <h3>Bersihkan sebelum disetor</h3>
+                            <p>Bilas wadah bekas dan pastikan tidak ada sisa minuman atau makanan.</p>
+                        </div>
+                        <div class="tip-example"><span class="tip-check" aria-hidden="true">✓</span><span><strong>Ingat:</strong> keringkan sebelum disimpan</span></div>
                     </article>
-                    <article class="tip-item">
-                        <span class="tip-icon" aria-hidden="true">♧</span>
-                        <div><h3>Simpan dengan rapi</h3><p>Pastikan sampah kering dan terkumpul di tempat yang aman hingga jadwal setoran.</p></div>
+                    <article class="tip-item tip-item-store">
+                        <div class="tip-card-top">
+                            <span class="tip-icon" aria-hidden="true">
+                                <svg viewBox="0 0 48 48"><path d="M9 18h30v21H9zM9 25h30M15 18v21m18-21v21"/><path d="M18 12h12"/></svg>
+                            </span>
+                            <span class="tip-index">03 <span>/ SIMPAN</span></span>
+                        </div>
+                        <div class="tip-copy">
+                            <h3>Simpan dengan rapi</h3>
+                            <p>Jaga material tetap kering dan pisahkan sesuai jenisnya sampai waktu setor.</p>
+                        </div>
+                        <div class="tip-example"><span class="tip-check" aria-hidden="true">✓</span><span><strong>Tips:</strong> gunakan wadah terpisah</span></div>
                     </article>
                 </div>
             </section>
@@ -132,10 +157,26 @@
                     <p>Pilih material yang sudah kamu pilah untuk mulai mengumpulkan saldo.</p>
                 </div>
                 <div class="category-grid">
-                    <article class="category-card"><span class="category-icon category-plastic" aria-hidden="true">♧</span><div><h3>Plastik botol</h3><p>Botol PET bersih dan kering</p></div><strong>Rp 3.000<span>/kg</span></strong></article>
-                    <article class="category-card"><span class="category-icon category-paper" aria-hidden="true">▤</span><div><h3>Kertas &amp; kardus</h3><p>Kertas, koran, dan kardus</p></div><strong>Rp 2.000<span>/kg</span></strong></article>
-                    <article class="category-card"><span class="category-icon category-can" aria-hidden="true">▥</span><div><h3>Kaleng aluminium</h3><p>Kaleng minuman tanpa isi</p></div><strong>Rp 8.000<span>/kg</span></strong></article>
-                    <article class="category-card"><span class="category-icon category-glass" aria-hidden="true">◇</span><div><h3>Botol kaca</h3><p>Botol kaca utuh dan bersih</p></div><strong>Rp 1.500<span>/kg</span></strong></article>
+                    <article class="category-card category-plastic-card">
+                        <span class="category-icon category-plastic" aria-hidden="true">♧</span>
+                        <div><h3>Plastik botol</h3><p>Botol PET bersih dan kering</p></div>
+                        <strong><span class="price-label">Nilai mulai</span>Rp 3.000<span>/kg</span></strong>
+                    </article>
+                    <article class="category-card category-paper-card">
+                        <span class="category-icon category-paper" aria-hidden="true">▤</span>
+                        <div><h3>Kertas &amp; kardus</h3><p>Kertas, koran, dan kardus</p></div>
+                        <strong><span class="price-label">Nilai mulai</span>Rp 2.000<span>/kg</span></strong>
+                    </article>
+                    <article class="category-card category-can-card">
+                        <span class="category-icon category-can" aria-hidden="true">▥</span>
+                        <div><h3>Kaleng aluminium</h3><p>Kaleng minuman tanpa isi</p></div>
+                        <strong><span class="price-label">Nilai mulai</span>Rp 8.000<span>/kg</span></strong>
+                    </article>
+                    <article class="category-card category-glass-card">
+                        <span class="category-icon category-glass" aria-hidden="true">◇</span>
+                        <div><h3>Botol kaca</h3><p>Botol kaca utuh dan bersih</p></div>
+                        <strong><span class="price-label">Nilai mulai</span>Rp 1.500<span>/kg</span></strong>
+                    </article>
                 </div>
             </section>
 
@@ -151,10 +192,10 @@
                     </div>
                 </div>
                 <div class="gallery-track" id="gallery-track" aria-label="Galeri kegiatan LetCycle">
-                    <article class="gallery-card"><img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Relawan memilah sampah untuk didaur ulang" loading="lazy"><div class="gallery-caption"><span>Aksi komunitas</span><h3>Pilah bersama, mulai dari sekitar</h3></div></article>
-                    <article class="gallery-card"><img src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Botol plastik yang siap dikumpulkan dan didaur ulang" loading="lazy"><div class="gallery-caption"><span>Setor sampah</span><h3>Setiap botol punya kesempatan kedua</h3></div></article>
-                    <article class="gallery-card"><img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Lingkungan hijau yang dijaga bersama" loading="lazy"><div class="gallery-caption"><span>Jaga bumi</span><h3>Lingkungan bersih untuk masa depan</h3></div></article>
-                    <article class="gallery-card"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Anak-anak ikut merawat lingkungan dan masa depan" loading="lazy"><div class="gallery-caption"><span>Generasi hijau</span><h3>Menjaga bumi untuk generasi berikutnya</h3></div></article>
+                    <article class="gallery-card"><img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Relawan memilah sampah untuk didaur ulang" loading="lazy"><span class="gallery-index">01 <span>/ 04</span></span><div class="gallery-caption"><span>Aksi komunitas</span><h3>Pilah bersama, mulai dari sekitar</h3></div></article>
+                    <article class="gallery-card"><img src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Botol plastik yang siap dikumpulkan dan didaur ulang" loading="lazy"><span class="gallery-index">02 <span>/ 04</span></span><div class="gallery-caption"><span>Setor sampah</span><h3>Setiap botol punya kesempatan kedua</h3></div></article>
+                    <article class="gallery-card"><img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Lingkungan hijau yang dijaga bersama" loading="lazy"><span class="gallery-index">03 <span>/ 04</span></span><div class="gallery-caption"><span>Jaga bumi</span><h3>Lingkungan bersih untuk masa depan</h3></div></article>
+                    <article class="gallery-card"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Anak-anak ikut merawat lingkungan dan masa depan" loading="lazy"><span class="gallery-index">04 <span>/ 04</span></span><div class="gallery-caption"><span>Generasi hijau</span><h3>Menjaga bumi untuk generasi berikutnya</h3></div></article>
                 </div>
             </section>
 
@@ -164,9 +205,9 @@
                     <p>Perubahan terasa lebih dekat saat dilakukan bersama.</p>
                 </div>
                 <div class="testimonials-grid">
-                    <article class="testimonial-card"><p>"Sekarang memilah sampah jadi kebiasaan seru di rumah. Setorannya juga praktis."</p><div><span class="user-initial">RA</span><strong>Rani A.</strong></div></article>
-                    <article class="testimonial-card"><p>"Titik penukarannya mudah ditemukan, dan saya senang tahu sampah saya diolah kembali."</p><div><span class="user-initial">DP</span><strong>Dimas P.</strong></div></article>
-                    <article class="testimonial-card"><p>"Sedikit demi sedikit, keluarga kami jadi lebih peduli menjaga lingkungan."</p><div><span class="user-initial">NS</span><strong>Nadia S.</strong></div></article>
+                    <article class="testimonial-card"><span class="quote-mark" aria-hidden="true">“</span><p>"Sekarang memilah sampah jadi kebiasaan seru di rumah. Setorannya juga praktis."</p><div><span class="user-initial">RA</span><span class="reviewer"><strong>Rani A.</strong><span class="reviewer-meta">Anggota komunitas</span></span><span class="testimonial-stars" aria-label="5 dari 5 bintang">★★★★★</span></div></article>
+                    <article class="testimonial-card"><span class="quote-mark" aria-hidden="true">“</span><p>"Titik penukarannya mudah ditemukan, dan saya senang tahu sampah saya diolah kembali."</p><div><span class="user-initial">DP</span><span class="reviewer"><strong>Dimas P.</strong><span class="reviewer-meta">Anggota komunitas</span></span><span class="testimonial-stars" aria-label="5 dari 5 bintang">★★★★★</span></div></article>
+                    <article class="testimonial-card"><span class="quote-mark" aria-hidden="true">“</span><p>"Sedikit demi sedikit, keluarga kami jadi lebih peduli menjaga lingkungan."</p><div><span class="user-initial">NS</span><span class="reviewer"><strong>Nadia S.</strong><span class="reviewer-meta">Anggota komunitas</span></span><span class="testimonial-stars" aria-label="5 dari 5 bintang">★★★★★</span></div></article>
                 </div>
             </section>
 
@@ -176,6 +217,7 @@
                 <p class="eyebrow">Saatnya bergerak bersama</p><h2 id="cta-title">Jadikan sampah bernilai</h2>
                 <p>Mulai pilah sampahmu hari ini dan jadi bagian dari perubahan untuk bumi yang lebih baik.</p>
                 <button class="button cta-button" type="button">Daftar Sekarang <span aria-hidden="true">→</span></button>
+                <div class="cta-benefits"><span>Mulai gratis</span><i aria-hidden="true"></i><span>Mudah dilakukan</span><i aria-hidden="true"></i><span>Baik untuk bumi</span></div>
             </section>
         </div>
     </main>
