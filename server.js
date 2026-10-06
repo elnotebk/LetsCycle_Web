@@ -4,6 +4,8 @@ import { promisify } from "node:util";
 import { randomBytes, scrypt as scryptCallback, timingSafeEqual } from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { LocationController } from "./server/LocationController.js";
+import { LocationRepository } from "./server/LocationRepository.js";
 
 const scrypt = promisify(scryptCallback);
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
@@ -11,7 +13,12 @@ const dataDirectory = path.join(projectRoot, "data");
 const usersFile = path.join(dataDirectory, "users.txt");
 const port = Number(process.env.PORT) || 3000;
 const maximumBodySize = 8 * 1024;
-const apiPaths = new Set(["/api/test/register", "/api/test/login"]);
+const apiPaths = new Set([
+    "/api/test/register",
+    "/api/test/login",
+    "/api/locations",
+    "/api/locations/cities",
+]);
 const contentTypes = new Map([
     [".css", "text/css; charset=utf-8"],
     [".gif", "image/gif"],
@@ -77,7 +84,7 @@ function setLocalCorsHeaders(request, response) {
     }
 
     response.setHeader("Access-Control-Allow-Origin", origin);
-    response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+    response.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     response.setHeader("Access-Control-Allow-Headers", "Accept, Content-Type");
     response.setHeader("Access-Control-Max-Age", "600");
     response.setHeader("Vary", "Origin");
@@ -242,6 +249,8 @@ async function serveStatic(request, response, pathname) {
     }
 }
 
+const locationController = new LocationController(new LocationRepository());
+
 /** Routes local test submissions and serves the dashboard on loopback only. */
 const server = createServer(async (request, response) => {
     try {
@@ -263,6 +272,14 @@ const server = createServer(async (request, response) => {
         }
         if (request.method === "POST" && url.pathname === "/api/test/login") {
             await loginTestUser(request, response);
+            return;
+        }
+        if (request.method === "GET" && url.pathname === "/api/locations") {
+            await locationController.list(url, response);
+            return;
+        }
+        if (request.method === "GET" && url.pathname === "/api/locations/cities") {
+            await locationController.listCities(response);
             return;
         }
         if (request.method !== "GET" && request.method !== "HEAD") {

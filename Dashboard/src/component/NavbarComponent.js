@@ -5,6 +5,8 @@ export class NavbarComponent {
     #root;
     #authService;
     #dashboardUrl;
+    #locationUrl;
+    #marketplaceUrl;
     #loginUrl;
     #registerUrl;
 
@@ -13,6 +15,8 @@ export class NavbarComponent {
         this.#root = root;
         this.#authService = authService;
         this.#dashboardUrl = new URL("../../index.html", import.meta.url).href;
+        this.#locationUrl = new URL("../../../Lokasi/index.html", import.meta.url).href;
+        this.#marketplaceUrl = new URL("../../../Marketplace/index.html", import.meta.url).href;
         this.#loginUrl = new URL("../page/login.html", import.meta.url).href;
         this.#registerUrl = new URL("../page/register.html", import.meta.url).href;
     }
@@ -20,6 +24,7 @@ export class NavbarComponent {
     /** Loads the current session and renders the correct navigation state. */
     async init() {
         this.#ensureStylesheet();
+        this.#configureNavigation();
         let user = null;
         try {
             user = await this.#authService.getCurrentUser();
@@ -33,6 +38,40 @@ export class NavbarComponent {
         } else {
             this.#renderGuest();
         }
+    }
+
+    #configureNavigation() {
+        const brand = document.querySelector(".site-header .brand");
+        if (brand) brand.href = this.#dashboardUrl;
+
+        const links = document.querySelectorAll(".site-header .main-nav .nav-link");
+        const destinations = [
+            { label: "Home", href: this.#dashboardUrl },
+            { label: "Lokasi Penukaran", href: this.#locationUrl },
+            { label: "Marketplace", href: this.#marketplaceUrl },
+        ];
+        const currentPath = window.location.pathname.toLowerCase();
+        let activeIndex = -1;
+        if (currentPath.includes("/lokasi/")) {
+            activeIndex = 1;
+        } else if (currentPath.includes("/marketplace/")) {
+            activeIndex = 2;
+        } else if (currentPath.endsWith("/dashboard/index.html") || currentPath === "/") {
+            activeIndex = 0;
+        }
+
+        links.forEach((link, index) => {
+            const destination = destinations[index];
+            if (!destination) return;
+            link.href = destination.href;
+            link.textContent = destination.label;
+            link.classList.toggle("is-active", index === activeIndex);
+            if (index === activeIndex) {
+                link.setAttribute("aria-current", "page");
+            } else {
+                link.removeAttribute("aria-current");
+            }
+        });
     }
 
     #ensureStylesheet() {

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3A7D44">
+    <meta name="description" content="Temukan lokasi penukaran sampah LetCycle terdekat.">
+    <title>Lokasi Penukaran | LetCycle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Dashboard/src/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+    <link rel="stylesheet" href="src/css/lokasi.css">
+    <link rel="stylesheet" href="src/css/responsive.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script type="module" src="../Dashboard/src/component/NavbarComponent.js"></script>
+    <script type="module" src="src/page/LokasiPage.js"></script>
+</head>
+
+<body class="location-page" data-location-page>
+    <header class="site-header">
+        <div class="nav-container">
+            <a class="brand" href="../Dashboard/index.html" aria-label="LetCycle, halaman utama">
+                <span>Let<span>Cycle</span></span>
+            </a>
+            <nav class="main-nav" aria-label="Navigasi utama">
+                <a class="nav-link" href="../Dashboard/index.html">Home</a>
+                <a class="nav-link is-active" href="index.html" aria-current="page">Lokasi Penukaran</a>
+                <a class="nav-link" href="../Marketplace/index.html">Marketplace</a>
+            </nav>
+            <div class="auth-actions" data-navbar-auth></div>
+        </div>
+    </header>
+
+    <main class="location-main">
+        <section class="location-heading content-width" aria-labelledby="location-title">
+            <h1 id="location-title">Lokasi Penukaran</h1>
+            <p>Temukan Tempat Penukaran Sampah Terdekat</p>
+        </section>
+
+        <section class="location-panels content-width" aria-label="Cari dan lihat lokasi penukaran">
+            <article class="location-card location-list-card" aria-labelledby="search-title">
+                <h2 class="location-card-title" id="search-title">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+                        <circle cx="12" cy="10" r="2.5"></circle>
+                    </svg>
+                    Cari Lokasi Penukaran
+                </h2>
+                <div class="location-toolbar">
+                    <div data-location-search></div>
+                    <div data-city-filter></div>
+                </div>
+                <div class="location-list" data-location-list aria-live="polite"></div>
+            </article>
+
+            <article class="location-card location-map-card" aria-labelledby="map-title">
+                <h2 class="location-card-title" id="map-title">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z"></path>
+                        <path d="M9 3v15m6-12v15"></path>
+                    </svg>
+                    Peta Lokasi
+                </h2>
+                <div class="location-map" data-location-map></div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer" data-site-footer></footer>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+@media (max-width: 760px) {
+    .location-main {
+        min-height: 0;
+        padding: 22px 0 30px;
+    }
+
+    .location-panels {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+        margin-top: 14px;
+    }
+
+    .location-card {
+        height: 440px;
+    }
+
+    .location-map-card {
+        height: 370px;
+        min-height: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .location-heading h1 {
+        font-size: 23px;
+    }
+
+    .location-heading p {
+        margin-left: 0;
+        font-size: 12px;
+    }
+
+    .location-panels {
+        gap: 15px;
+    }
+
+    .location-card {
+        height: 420px;
+        padding: 13px;
+        border-radius: 13px;
+    }
+
+    .location-map-card {
+        height: 340px;
+        min-height: 320px;
+    }
+
+    .location-card-title {
+        font-size: 14px;
+    }
+
+    .location-toolbar {
+        gap: 7px;
+    }
+
+    .city-filter-button {
+        min-width: 76px;
+        padding-inline: 9px;
+    }
+}
