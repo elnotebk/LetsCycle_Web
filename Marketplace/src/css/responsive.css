@@ -4,21 +4,21 @@
 
 /* ===== TABLET (<= 1024px) ===== */
 @media (max-width: 1024px) {
-  .navbar {
-    padding: 16px 24px;
-    flex-wrap: wrap;
+  .marketplace-toolbar__container {
     gap: 16px;
   }
 
-  .navbar__search {
-    order: 3;
+  .marketplace-search {
     max-width: 100%;
-    flex-basis: 100%;
   }
 
-  .hero {
-    padding: 40px 24px;
-    flex-direction: column;
+  .marketplace-hero {
+    padding: 40px 0 48px;
+  }
+
+  .marketplace-hero__container {
+    grid-template-columns: 1fr;
+    gap: 36px;
   }
 
   .hero__content {
@@ -26,66 +26,55 @@
   }
 
   .hero__image {
-    min-height: 260px;
-  }
-
-  .categories,
-  .products {
-    padding-left: 24px;
-    padding-right: 24px;
+    max-height: 380px;
   }
 
   .products__grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
 
 /* ===== MOBILE (<= 640px) ===== */
 @media (max-width: 640px) {
-  .navbar {
+  .marketplace-toolbar__container {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 12px;
   }
 
-  .navbar__menu {
-    order: 2;
-    gap: 18px;
-  }
-
-  .navbar__search {
-    order: 3;
-  }
-
-  .navbar__actions {
-    order: 1;
-    align-self: flex-end;
-    margin-top: -40px;
+  .marketplace-actions {
+    justify-content: flex-end;
   }
 
   .hero__title {
-    font-size: 1.7rem;
+    font-size: 28px;
   }
 
   .hero__features {
     flex-direction: column;
-    gap: 12px;
-  }
-
-  .hero__feature {
-    border-right: none;
-    padding-right: 0;
+    gap: 14px;
   }
 
   .categories__list {
-    gap: 10px;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
   }
 
   .category-pill {
-    padding: 10px 16px;
-    font-size: 0.85rem;
+    padding: 8px 16px;
+    font-size: 12.5px;
+    white-space: nowrap;
   }
 
   .products__grid {
     grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .product-card__image-wrapper {
+    aspect-ratio: 16 / 10;
   }
 }

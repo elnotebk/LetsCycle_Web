@@ -1,136 +1,344 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LetsCycle</title>
+    <meta name="theme-color" content="#3A7D44">
+    <meta name="description" content="Temukan dan beli produk kreatif dari daur ulang sampah plastik di LetCycle Marketplace.">
+    <title>Marketplace | LetCycle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Dashboard/src/css/style.css">
     <link rel="stylesheet" href="src/css/style.css">
-
-    <!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LetsCycle - Marketplace</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="src/css/responsive.css">
+    <script type="module" src="../Dashboard/src/component/NavbarComponent.js"></script>
+    <script type="module" src="src/page/MarketplacePage.js"></script>
 </head>
-<body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="navbar">
-    <div class="navbar__logo">LetsCycle</div>
+<body class="marketplace-page">
+    <!-- ===== HEADER / NAVIGASI UTAMA ===== -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a class="brand" href="../Dashboard/index.html" aria-label="LetCycle, halaman utama">
+                <span>Let<span>Cycle</span></span>
+            </a>
+            <nav class="main-nav" aria-label="Navigasi utama">
+                <a class="nav-link" href="../Dashboard/index.html">Home</a>
+                <a class="nav-link" href="../Lokasi/index.html">Lokasi Penukaran</a>
+                <a class="nav-link is-active" href="index.html" aria-current="page">Marketplace</a>
+            </nav>
+            <div class="auth-actions" data-navbar-auth></div>
+        </div>
+    </header>
 
-    <nav class="navbar__menu">
-      <a href="#" class="navbar__link">Home</a>
-      <a href="#" class="navbar__link">Map</a>
-      <a href="#" class="navbar__link navbar__link--active">Marketplace</a>
-    </nav>
+    <!-- ===== SUB-NAV / TOOLBAR MARKETPLACE ===== -->
+    <section class="marketplace-toolbar" aria-label="Pencarian dan aksi marketplace">
+        <div class="content-width marketplace-toolbar__container">
+            <div class="marketplace-search">
+                <svg class="marketplace-search__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="search" id="marketplace-search-input" placeholder="Cari produk daur ulang plastik..." class="marketplace-search__input" aria-label="Cari produk daur ulang">
+            </div>
 
-    <div class="navbar__search">
-      <img src="../../Asset/icon/search.svg" alt="" class="navbar__search-icon">
-      <input type="text" placeholder="" class="navbar__search-input">
-    </div>
-
-    <div class="navbar__actions">
-      <button class="icon-btn" aria-label="Wishlist">
-        <img src="../../Asset/icon/heart.svg" alt="Wishlist">
-      </button>
-      <button class="icon-btn" aria-label="Keranjang">
-        <img src="../../Asset/icon/cart.svg" alt="Keranjang">
-      </button>
-    </div>
-  </header>
-
-  <main>
-    <!-- ===== HERO ===== -->
-    <section class="hero">
-      <div class="hero__content">
-        <h1 class="hero__title">
-          SAMPAH PLASTIK,<br>
-          JADI PRODUK BERMANFAAT.
-        </h1>
-        <p class="hero__desc">
-          Temukan produk kreatif dari plastik daur ulang
-          dan ikut menjaga lingkungan bersama kami.
-        </p>
-        <a href="#produk-pilihan" class="btn btn--primary">Jelajahi Produk →</a>
-
-        <ul class="hero__features">
-          <li class="hero__feature">
-            <img src="../../Asset/icon/recycle.svg" alt="">
-            <span>100%<br>Daur Ulang Plastik</span>
-          </li>
-          <li class="hero__feature">
-            <img src="../../Asset/icon/leaf.svg" alt="">
-            <span>Produk Unik<br>dan Kreatif</span>
-          </li>
-          <li class="hero__feature hero__feature--text-only">
-            <span>Dukung<br>Lingkungan</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="hero__image">
-        <img src="../../Asset/image/hero-recycled.jpg" alt="Produk daur ulang plastik ramah lingkungan">
-      </div>
+            <div class="marketplace-actions">
+                <button class="market-btn market-btn--wishlist" type="button" aria-label="Lihat Favorit" title="Wishlist">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span>Favorit</span>
+                    <span class="market-btn__badge" id="wishlist-badge">0</span>
+                </button>
+                <button class="market-btn market-btn--cart" type="button" aria-label="Lihat Keranjang Belanja" title="Keranjang">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span>Keranjang</span>
+                    <span class="market-btn__badge" id="cart-badge">0</span>
+                </button>
+            </div>
+        </div>
     </section>
 
-    <!-- ===== KATEGORI ===== -->
-    <section class="categories">
-      <h2 class="section-title">Kategori</h2>
-      <div class="categories__list">
-        <a href="#" class="category-pill">Fashion <span>→</span></a>
-        <a href="#" class="category-pill category-pill--outline">Rumah <span>→</span></a>
-        <a href="#" class="category-pill">Furniture <span>→</span></a>
-        <a href="#" class="category-pill">Hiasan <span>→</span></a>
-        <a href="#" class="category-pill">Aksesoris <span>→</span></a>
-      </div>
-    </section>
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="marketplace-hero" aria-labelledby="hero-title">
+            <div class="content-width marketplace-hero__container">
+                <div class="hero__content">
+                    <p class="eyebrow">Marketplace Ramah Lingkungan</p>
+                    <h1 class="hero__title" id="hero-title">
+                        SAMPAH PLASTIK,<br>
+                        JADI PRODUK BERMANFAAT.
+                    </h1>
+                    <p class="hero__desc">
+                        Temukan produk kreatif dari plastik daur ulang
+                        dan ikut menjaga lingkungan bersama kami.
+                    </p>
+                    <a href="#produk-pilihan" class="hero__cta">Jelajahi Produk <span aria-hidden="true">→</span></a>
 
-    <!-- ===== PRODUK PILIHAN ===== -->
-    <section class="products" id="produk-pilihan">
-      <h2 class="section-title">Produk Pilihan</h2>
+                    <ul class="hero__features">
+                        <li class="hero__feature">
+                            <span class="feature-icon feature-icon--recycle" aria-hidden="true">
+                                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 3 20 9h-3l3 5m-4-11L12 9h3l-3 5m8-1 5 3-3 2m-2-5 2 4 3-1m-5 1v6m0-6-3 1m3 5h-7l1.5-2.5m5.5 2.5 1.5 2.5h-7m.5-5-3-1m3 1-1.5 2.5"></path>
+                                </svg>
+                            </span>
+                            <span><strong>100%</strong><br>Daur Ulang Plastik</span>
+                        </li>
+                        <li class="hero__feature">
+                            <span class="feature-icon feature-icon--leaf" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A9.49 9.49 0 0 0 12 21c6.08 0 10-4.92 10-11 0-.68-.05-1.35-.16-2H17zm-5 11c-2.8 0-5.18-1.57-6.38-3.87 1.44-3.52 4.14-6.84 8.78-7.98-.34 6.78-3.53 11.85-2.4 11.85z"></path>
+                                </svg>
+                            </span>
+                            <span><strong>Produk Unik</strong><br>dan Kreatif</span>
+                        </li>
+                        <li class="hero__feature">
+                            <span class="feature-icon feature-icon--support" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                                </svg>
+                            </span>
+                            <span><strong>Dukung</strong><br>Lingkungan</span>
+                        </li>
+                    </ul>
+                </div>
 
-      <div class="products__grid">
-        <article class="product-card">
-          <img src="../../Asset/image/produk-tas-belanja.jpg" alt="Tas Belanja Recycled Plastic" class="product-card__image">
-          <div class="product-card__body">
-            <h3 class="product-card__name">Tas Belanja Recycled Plastic</h3>
-            <p class="product-card__price">Rp45.000</p>
-            <p class="product-card__rating">
-              <img src="../../Asset/icon/star.svg" alt="">
-              4.8 <span>(124)</span>
-            </p>
-          </div>
-        </article>
+                <div class="hero__image">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1000&q=80" alt="Produk daur ulang plastik ramah lingkungan" fetchpriority="high">
+                </div>
+            </div>
+        </section>
 
-        <article class="product-card">
-          <img src="../../Asset/image/produk-pot-tanaman.jpg" alt="Pot Tanaman Recycled Plastic" class="product-card__image">
-          <div class="product-card__body">
-            <h3 class="product-card__name">Pot Tanaman Recycled Plastic</h3>
-            <p class="product-card__price">Rp25.000</p>
-            <p class="product-card__rating">
-              <img src="../../Asset/icon/star.svg" alt="">
-              4.7 <span>(98)</span>
-            </p>
-          </div>
-        </article>
+        <!-- ===== KATEGORI ===== -->
+        <section class="categories content-width" aria-labelledby="kategori-title">
+            <div class="section-header">
+                <p class="eyebrow">Pilihan Koleksi</p>
+                <h2 class="section-title" id="kategori-title">Kategori</h2>
+            </div>
+            <div class="categories__list">
+                <button type="button" class="category-pill is-active" data-category="all">Semua</button>
+                <button type="button" class="category-pill" data-category="fashion">Fashion <span aria-hidden="true">→</span></button>
+                <button type="button" class="category-pill" data-category="rumah">Rumah <span aria-hidden="true">→</span></button>
+                <button type="button" class="category-pill" data-category="furniture">Furniture <span aria-hidden="true">→</span></button>
+                <button type="button" class="category-pill" data-category="hiasan">Hiasan <span aria-hidden="true">→</span></button>
+                <button type="button" class="category-pill" data-category="aksesoris">Aksesoris <span aria-hidden="true">→</span></button>
+            </div>
+        </section>
 
-        <article class="product-card">
-          <img src="../../Asset/image/produk-lampu-hias.jpg" alt="Lampu Hias Recycled Plastic" class="product-card__image">
-          <div class="product-card__body">
-            <h3 class="product-card__name">Lampu Hias Recycled Plastic</h3>
-            <p class="product-card__price">Rp65.000</p>
-            <p class="product-card__rating">
-              <img src="../../Asset/icon/star.svg" alt="">
-              4.9 <span>(76)</span>
-            </p>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
+        <!-- ===== PRODUK PILIHAN ===== -->
+        <section class="products content-width" id="produk-pilihan" aria-labelledby="produk-title">
+            <div class="section-header">
+                <p class="eyebrow">Katalog Pilihan</p>
+                <h2 class="section-title" id="produk-title">Produk Pilihan</h2>
+            </div>
 
+            <div class="products__grid">
+                <!-- Produk 1 -->
+                <article class="product-card" data-category="fashion" data-name="tas belanja recycled plastic">
+                    <div class="product-card__image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1597484661643-2f5fef640dd1?auto=format&fit=crop&w=700&q=80" alt="Tas Belanja Recycled Plastic" class="product-card__image" loading="lazy">
+                        <span class="product-card__badge">Daur Ulang PET</span>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-card__name">Tas Belanja Recycled Plastic</h3>
+                        <p class="product-card__price">Rp 45.000</p>
+                        <div class="product-card__rating">
+                            <svg class="icon-star" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                            </svg>
+                            <strong>4.8</strong> <span>(124 ulasan)</span>
+                        </div>
+                        <div class="product-card__actions">
+                            <button type="button" class="product-card__btn" aria-label="Tambah Tas Belanja ke Keranjang">+ Keranjang</button>
+                            <button type="button" class="product-card__wish-btn" aria-label="Tambah Tas Belanja ke Favorit" title="Favorit">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Produk 2 -->
+                <article class="product-card" data-category="rumah" data-name="pot tanaman recycled plastic">
+                    <div class="product-card__image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=700&q=80" alt="Pot Tanaman Recycled Plastic" class="product-card__image" loading="lazy">
+                        <span class="product-card__badge">Plastik HDPE</span>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-card__name">Pot Tanaman Recycled Plastic</h3>
+                        <p class="product-card__price">Rp 25.000</p>
+                        <div class="product-card__rating">
+                            <svg class="icon-star" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                            </svg>
+                            <strong>4.7</strong> <span>(98 ulasan)</span>
+                        </div>
+                        <div class="product-card__actions">
+                            <button type="button" class="product-card__btn" aria-label="Tambah Pot Tanaman ke Keranjang">+ Keranjang</button>
+                            <button type="button" class="product-card__wish-btn" aria-label="Tambah Pot Tanaman ke Favorit" title="Favorit">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Produk 3 -->
+                <article class="product-card" data-category="hiasan" data-name="lampu hias recycled plastic">
+                    <div class="product-card__image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80" alt="Lampu Hias Recycled Plastic" class="product-card__image" loading="lazy">
+                        <span class="product-card__badge">Kreatif Artistik</span>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-card__name">Lampu Hias Recycled Plastic</h3>
+                        <p class="product-card__price">Rp 65.000</p>
+                        <div class="product-card__rating">
+                            <svg class="icon-star" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                            </svg>
+                            <strong>4.9</strong> <span>(76 ulasan)</span>
+                        </div>
+                        <div class="product-card__actions">
+                            <button type="button" class="product-card__btn" aria-label="Tambah Lampu Hias ke Keranjang">+ Keranjang</button>
+                            <button type="button" class="product-card__wish-btn" aria-label="Tambah Lampu Hias ke Favorit" title="Favorit">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Produk 4 -->
+                <article class="product-card" data-category="rumah" data-name="kotak penyimpanan daur ulang organizer">
+                    <div class="product-card__image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=700&q=80" alt="Kotak Penyimpanan Daur Ulang" class="product-card__image" loading="lazy">
+                        <span class="product-card__badge">Daur Ulang PP</span>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-card__name">Kotak Organizer Daur Ulang</h3>
+                        <p class="product-card__price">Rp 35.000</p>
+                        <div class="product-card__rating">
+                            <svg class="icon-star" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                            </svg>
+                            <strong>4.9</strong> <span>(85 ulasan)</span>
+                        </div>
+                        <div class="product-card__actions">
+                            <button type="button" class="product-card__btn" aria-label="Tambah Kotak Organizer ke Keranjang">+ Keranjang</button>
+                            <button type="button" class="product-card__wish-btn" aria-label="Tambah Kotak Organizer ke Favorit" title="Favorit">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Produk 5 -->
+                <article class="product-card" data-category="aksesoris" data-name="tempat pensil eco desk aksesoris meja">
+                    <div class="product-card__image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=700&q=80" alt="Tempat Pensil Eco Desk" class="product-card__image" loading="lazy">
+                        <span class="product-card__badge">Eco Desk</span>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-card__name">Tempat Pensil Eco Desk</h3>
+                        <p class="product-card__price">Rp 18.000</p>
+                        <div class="product-card__rating">
+                            <svg class="icon-star" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                            </svg>
+                            <strong>4.6</strong> <span>(42 ulasan)</span>
+                        </div>
+                        <div class="product-card__actions">
+                            <button type="button" class="product-card__btn" aria-label="Tambah Tempat Pensil ke Keranjang">+ Keranjang</button>
+                            <button type="button" class="product-card__wish-btn" aria-label="Tambah Tempat Pensil ke Favorit" title="Favorit">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Produk 6 -->
+                <article class="product-card" data-category="furniture" data-name="kursi mini plastik daur ulang eco stool">
+                    <div class="product-card__image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=700&q=80" alt="Kursi Mini Plastik Daur Ulang" class="product-card__image" loading="lazy">
+                        <span class="product-card__badge">Eco Furniture</span>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-card__name">Bangku Eco Stool Recycled</h3>
+                        <p class="product-card__price">Rp 120.000</p>
+                        <div class="product-card__rating">
+                            <svg class="icon-star" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                            </svg>
+                            <strong>5.0</strong> <span>(31 ulasan)</span>
+                        </div>
+                        <div class="product-card__actions">
+                            <button type="button" class="product-card__btn" aria-label="Tambah Bangku Eco Stool ke Keranjang">+ Keranjang</button>
+                            <button type="button" class="product-card__wish-btn" aria-label="Tambah Bangku Eco Stool ke Favorit" title="Favorit">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pesan jika produk tidak ditemukan saat dicari -->
+            <div id="no-products-notice" style="display: none; text-align: center; padding: 48px 20px; color: var(--market-text-muted);">
+                <p style="font-size: 16px; font-weight: 600;">Tidak ada produk yang cocok dengan pencarianmu.</p>
+                <p style="font-size: 13.5px; margin-top: 6px;">Coba gunakan kata kunci lain atau pilih kategori "Semua".</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="footer-content content-width">
+            <div class="footer-about">
+                <a class="brand footer-brand" href="../Dashboard/index.html">
+                    <span class="brand-mark" aria-hidden="true">↻</span>
+                    <span>Let<span>Cycle</span></span>
+                </a>
+                <p>Menghubungkan kebiasaan baik dengan masa depan yang lebih hijau. Beli produk daur ulang dan dukung ekonomi sirkular bersama LetCycle.</p>
+                <div class="social-links" aria-label="Media sosial">
+                    <a href="#" aria-label="Instagram">ig</a>
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="TikTok">♪</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div>
+                    <h2>Jelajahi</h2>
+                    <a href="../Dashboard/index.html">Home</a>
+                    <a href="../Lokasi/index.html">Lokasi Penukaran</a>
+                    <a href="index.html">Marketplace</a>
+                </div>
+                <div>
+                    <h2>Bantuan</h2>
+                    <a href="../Dashboard/index.html#tentang">Cara kerja</a>
+                    <a href="../Dashboard/index.html#layanan">Tentang kami</a>
+                    <a href="../Dashboard/index.html#kontak">Hubungi kami</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom content-width">
+            <p>© 2025 LetCycle. Bersama menjaga bumi tetap lestari.</p>
+            <span>Dibuat dengan kepedulian untuk bumi <span aria-hidden="true">♡</span></span>
+        </div>
+    </footer>
 </body>
+
 </html>
