@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3A7D44">
+    <meta name="description" content="Daftar LetCycle dan mulai mengubah sampah menjadi dampak baik.">
+    <title>Daftar | LetCycle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/app.css">
+    <script type="module" src="RegisterPage.js"></script>
+    <script type="module" src="../component/NavbarComponent.js"></script>
+</head>
+
+<body class="min-h-screen bg-[radial-gradient(ellipse_at_9%_43%,rgba(167,201,87,0.12),transparent_27%),radial-gradient(ellipse_at_90%_78%,rgba(58,125,68,0.1),transparent_28%)] bg-paper">
+    <header class="site-header sticky top-0 z-20 w-full bg-[linear-gradient(105deg,#1F5C2E,#3A7D44)] text-white shadow-[0_8px_20px_rgba(23,74,41,0.15)]">
+        <div class="relative mx-auto grid min-h-[72px] w-[min(100%,1200px)] grid-cols-[1fr_auto] items-center px-7 mobile:min-h-[60px] mobile:w-full mobile:gap-2.5 mobile:px-[13px] tiny:gap-1.5 tiny:px-3.5">
+            <a class="brand inline-flex w-fit items-center gap-2 text-[23px] font-extrabold tracking-[-0.8px] text-white mobile:gap-1.5 mobile:text-[17px] mobile:tracking-[-0.5px] tiny:text-[15px]" href="../../index.html" aria-label="LetCycle, halaman utama">
+                <span>Let<span>Cycle</span></span>
+            </a>
+            <nav class="main-nav hidden items-center gap-[38px] mobile:justify-self-center mobile:gap-[clamp(8px,2.8vw,17px)] tiny:gap-[7px]" aria-label="Navigasi utama">
+                <a class="nav-link relative py-6 text-[15px] font-semibold text-white transition-colors duration-[160ms] aria-[current=page]:after:absolute aria-[current=page]:after:inset-x-0 aria-[current=page]:after:bottom-[15px] aria-[current=page]:after:h-px aria-[current=page]:after:rounded-[2px] aria-[current=page]:after:bg-white aria-[current=page]:after:content-[''] mobile:py-[19px] mobile:text-[clamp(9px,2.6vw,12px)] mobile:aria-[current=page]:after:bottom-3" href="../../index.html">Home</a>
+                <a class="nav-link relative py-6 text-[15px] font-semibold text-white transition-colors duration-[160ms] aria-[current=page]:after:absolute aria-[current=page]:after:inset-x-0 aria-[current=page]:after:bottom-[15px] aria-[current=page]:after:h-px aria-[current=page]:after:rounded-[2px] aria-[current=page]:after:bg-white aria-[current=page]:after:content-[''] mobile:py-[19px] mobile:text-[clamp(9px,2.6vw,12px)] mobile:aria-[current=page]:after:bottom-3" href="../../../Lokasi/index.html">Lokasi Penukaran</a>
+                <a class="nav-link relative py-6 text-[15px] font-semibold text-white transition-colors duration-[160ms] aria-[current=page]:after:absolute aria-[current=page]:after:inset-x-0 aria-[current=page]:after:bottom-[15px] aria-[current=page]:after:h-px aria-[current=page]:after:rounded-[2px] aria-[current=page]:after:bg-white aria-[current=page]:after:content-[''] mobile:py-[19px] mobile:text-[clamp(9px,2.6vw,12px)] mobile:aria-[current=page]:after:bottom-3" href="../../../Marketplace/index.html">Marketplace</a>
+            </nav>
+            <div class="relative flex items-center justify-self-end gap-6 text-[14px] font-bold data-[signed-in]:gap-3 mobile:gap-2 mobile:text-[10px] mobile:data-[signed-in]:gap-0 tiny:gap-1.5 tiny:text-[9px] tiny:data-[signed-in]:gap-1.5" data-navbar-auth></div>
+        </div>
+    </header>
+
+    <main class="auth-main relative isolate grid min-h-[calc(100vh-72px)] place-items-center overflow-hidden px-6 pb-16 pt-12 mobile:min-h-[calc(100vh-60px)] mobile:px-[18px] mobile:pb-11 mobile:pt-[30px]">
+        <section class="w-[min(100%,560px)] rounded-[22px] border border-[rgba(213,226,204,0.85)] bg-white px-[46px] pb-[38px] pt-[42px] shadow-[0_22px_60px_rgba(38,50,56,0.11)] mobile:rounded-[18px] mobile:px-[23px] mobile:pb-[27px] mobile:pt-8" aria-labelledby="register-title">
+            <div class="mb-[26px] text-center mobile:mb-[21px]">
+                <p class="mb-[9px] text-[12px] font-extrabold uppercase leading-[1.5] tracking-[1.6px] text-teal mobile:text-[10px]">Mulai langkah baikmu</p>
+                <h1 class="text-[clamp(28px,5vw,36px)] font-extrabold leading-[1.2] tracking-[-1px] text-ink" id="register-title">Bergabung dengan LetCycle</h1>
+                <p class="mt-[9px] text-[14px] text-muted mobile:text-[12px]">Buat akun dan tumbuh bersama komunitas yang peduli bumi.</p>
+            </div>
+            <form class="grid gap-[17px] mobile:gap-3.5" id="register-form" novalidate>
+                <div class="grid gap-1.5">
+                    <label class="text-[13px] font-bold text-ink" for="register-name">Nama lengkap</label>
+                    <input class="min-h-12 w-full rounded-[10px] border border-soft bg-[#FCFDFB] px-3.5 text-[14px] text-ink outline-none transition-[border-color,box-shadow,background] duration-[160ms] placeholder:text-[#7C8782] hover:border-[#B7CEAF] focus:border-primary focus:bg-white focus:shadow-[0_0_0_3px_rgba(58,125,68,0.13)] aria-[invalid=true]:border-[#C35A54]" id="register-name" name="nama" type="text" autocomplete="name" minlength="2" maxlength="60" placeholder="Nama lengkapmu" required>
+                    <span class="text-[11px] leading-[1.4] text-[#A94442] empty:hidden" id="register-name-error" data-field-error="nama"></span>
+                </div>
+                <div class="grid gap-1.5">
+                    <label class="text-[13px] font-bold text-ink" for="register-email">Email</label>
+                    <input class="min-h-12 w-full rounded-[10px] border border-soft bg-[#FCFDFB] px-3.5 text-[14px] text-ink outline-none transition-[border-color,box-shadow,background] duration-[160ms] placeholder:text-[#7C8782] hover:border-[#B7CEAF] focus:border-primary focus:bg-white focus:shadow-[0_0_0_3px_rgba(58,125,68,0.13)] aria-[invalid=true]:border-[#C35A54]" id="register-email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="nama@email.com" required>
+                    <span class="text-[11px] leading-[1.4] text-[#A94442] empty:hidden" id="register-email-error" data-field-error="email"></span>
+                </div>
+                <div class="grid gap-1.5">
+                    <label class="text-[13px] font-bold text-ink" for="register-password">Password</label>
+                    <div class="relative">
+                        <input class="min-h-12 w-full rounded-[10px] border border-soft bg-[#FCFDFB] px-3.5 text-[14px] text-ink outline-none transition-[border-color,box-shadow,background] duration-[160ms] placeholder:text-[#7C8782] hover:border-[#B7CEAF] focus:border-primary focus:bg-white focus:shadow-[0_0_0_3px_rgba(58,125,68,0.13)] aria-[invalid=true]:border-[#C35A54] pr-[100px]" id="register-password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" placeholder="Minimal 8 karakter" required>
+                        <button class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer p-[5px] text-[11px] font-bold text-teal" type="button" data-toggle-password="register-password" aria-label="Tampilkan password">Tampilkan</button>
+                    </div>
+                    <span class="text-[11px] leading-[1.4] text-[#A94442] empty:hidden" id="register-password-error" data-field-error="password"></span>
+                </div>
+                <div class="grid gap-1.5">
+                    <label class="text-[13px] font-bold text-ink" for="register-confirm-password">Konfirmasi password</label>
+                    <div class="relative">
+                        <input class="min-h-12 w-full rounded-[10px] border border-soft bg-[#FCFDFB] px-3.5 text-[14px] text-ink outline-none transition-[border-color,box-shadow,background] duration-[160ms] placeholder:text-[#7C8782] hover:border-[#B7CEAF] focus:border-primary focus:bg-white focus:shadow-[0_0_0_3px_rgba(58,125,68,0.13)] aria-[invalid=true]:border-[#C35A54] pr-[100px]" id="register-confirm-password" name="konfirmasiPassword" type="password" autocomplete="new-password" maxlength="128" placeholder="Ulangi password" required>
+                        <button class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer p-[5px] text-[11px] font-bold text-teal" type="button" data-toggle-password="register-confirm-password" aria-label="Tampilkan password">Tampilkan</button>
+                    </div>
+                    <span class="text-[11px] leading-[1.4] text-[#A94442] empty:hidden" id="register-confirm-password-error" data-field-error="konfirmasiPassword"></span>
+                </div>
+                <p class="text-center text-[12px] empty:hidden data-[state=error]:rounded-[9px] data-[state=success]:rounded-[9px] data-[state=error]:bg-[#FBEDEC] data-[state=success]:bg-soft data-[state=error]:px-3 data-[state=success]:px-3 data-[state=error]:py-2.5 data-[state=success]:py-2.5 data-[state=error]:text-[#8F342F] data-[state=success]:text-teal" data-form-status role="status" aria-live="polite"></p>
+                <button class="mt-0.5 min-h-[49px] cursor-pointer rounded-[10px] bg-[linear-gradient(105deg,#1F5C2E,#3A7D44)] text-[14px] font-extrabold text-white shadow-[0_8px_18px_rgba(23,74,41,0.2)] transition-[transform,box-shadow,opacity] duration-[160ms] enabled:hover:-translate-y-px enabled:hover:shadow-[0_11px_22px_rgba(23,74,41,0.25)] disabled:cursor-wait disabled:opacity-[0.72]" type="submit">Daftar</button>
+            </form>
+            <p class="mt-[22px] text-center text-[13px] text-muted">Sudah punya akun? <a class="font-extrabold text-primary hover:text-teal hover:underline" href="login.html">Masuk</a></p>
+            <p class="mt-5 flex items-center justify-center gap-[7px] text-[10px] text-muted">
+                Mode uji lokal: password disimpan sebagai hash, bukan teks asli.
+            </p>
+        </section>
+    </main>
+</body>
+
+</html>

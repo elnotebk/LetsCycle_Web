@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3A7D44">
+    <meta name="description" content="Temukan dan beli produk kreatif dari daur ulang sampah plastik di LetCycle Marketplace.">
+    <title>Marketplace | LetCycle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <script type="module" src="../Dashboard/src/component/NavbarComponent.js"></script>
+    <script type="module" src="src/page/MarketplacePage.js"></script>
+</head>
+
+<body>
+    <!-- ===== HEADER / NAVIGASI UTAMA ===== -->
+    <header class="site-header sticky top-0 z-20 w-full bg-[linear-gradient(105deg,#1F5C2E,#3A7D44)] text-white shadow-[0_8px_20px_rgba(23,74,41,0.15)]">
+        <div class="relative mx-auto grid min-h-[72px] w-[min(100%,1200px)] grid-cols-[1fr_auto_1fr] mobile:grid-cols-[auto_1fr_auto] items-center px-7 mobile:min-h-[60px] mobile:w-full mobile:gap-2.5 mobile:px-[13px] tiny:gap-1.5 tiny:px-3.5">
+            <a class="brand inline-flex w-fit items-center gap-2 text-[23px] font-extrabold tracking-[-0.8px] text-white mobile:gap-1.5 mobile:text-[17px] mobile:tracking-[-0.5px] tiny:text-[15px]" href="../Dashboard/index.html" aria-label="LetCycle, halaman utama">
+                <span>Let<span>Cycle</span></span>
+            </a>
+            <nav class="main-nav flex items-center gap-[38px] mobile:justify-self-center mobile:gap-[clamp(8px,2.8vw,17px)] tiny:gap-[7px]" aria-label="Navigasi utama">
+                <a class="nav-link relative py-6 text-[15px] font-semibold text-white transition-colors duration-[160ms] aria-[current=page]:after:absolute aria-[current=page]:after:inset-x-0 aria-[current=page]:after:bottom-[15px] aria-[current=page]:after:h-px aria-[current=page]:after:rounded-[2px] aria-[current=page]:after:bg-white aria-[current=page]:after:content-[''] mobile:py-[19px] mobile:text-[clamp(9px,2.6vw,12px)] mobile:aria-[current=page]:after:bottom-3" href="../Dashboard/index.html">Home</a>
+                <a class="nav-link relative py-6 text-[15px] font-semibold text-white transition-colors duration-[160ms] aria-[current=page]:after:absolute aria-[current=page]:after:inset-x-0 aria-[current=page]:after:bottom-[15px] aria-[current=page]:after:h-px aria-[current=page]:after:rounded-[2px] aria-[current=page]:after:bg-white aria-[current=page]:after:content-[''] mobile:py-[19px] mobile:text-[clamp(9px,2.6vw,12px)] mobile:aria-[current=page]:after:bottom-3" href="../Lokasi/index.html">Lokasi Penukaran</a>
+                <a class="nav-link relative py-6 text-[15px] font-semibold text-white transition-colors duration-[160ms] aria-[current=page]:after:absolute aria-[current=page]:after:inset-x-0 aria-[current=page]:after:bottom-[15px] aria-[current=page]:after:h-px aria-[current=page]:after:rounded-[2px] aria-[current=page]:after:bg-white aria-[current=page]:after:content-[''] mobile:py-[19px] mobile:text-[clamp(9px,2.6vw,12px)] mobile:aria-[current=page]:after:bottom-3" href="index.html" aria-current="page">Marketplace</a>
+            </nav>
+            <div class="relative flex items-center justify-self-end gap-6 text-[14px] font-bold data-[signed-in]:gap-3 mobile:gap-2 mobile:text-[10px] mobile:data-[signed-in]:gap-0 tiny:gap-1.5 tiny:text-[9px] tiny:data-[signed-in]:gap-1.5" data-navbar-auth></div>
+        </div>
+    </header>
+
+    <!-- ===== SUB-NAV / TOOLBAR MARKETPLACE ===== -->
+    <section class="sticky top-0 z-10 border-b border-market-line bg-white py-3.5 shadow-[0_2px_10px_rgba(0,0,0,0.03)]" aria-label="Pencarian dan aksi marketplace">
+        <div class="mx-auto w-page mobile:w-page-sm flex items-center justify-between gap-6 lg-down:gap-4 sm-down:flex-col sm-down:items-stretch sm-down:gap-3">
+            <div class="relative max-w-[520px] flex-1 lg-down:max-w-full">
+                <svg class="pointer-events-none absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-muted" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="search" id="marketplace-search-input" placeholder="Cari produk daur ulang plastik..." class="w-full rounded-[999px] border-[1.5px] border-market-line bg-market-card py-2.5 pl-11 pr-4 text-[14px] leading-[normal] text-ink outline-none transition-[border-color,box-shadow,background] duration-200 placeholder:text-[#757575] focus:border-primary focus:bg-white focus:shadow-[0_0_0_3px_rgba(58,125,68,0.15)]" aria-label="Cari produk daur ulang">
+            </div>
+
+            <div class="flex items-center gap-3 sm-down:justify-end">
+                <button class="group inline-flex cursor-pointer items-center gap-2 rounded-[999px] border-[1.5px] border-market-line bg-white px-4 py-2 text-[13px] font-semibold text-ink transition-all duration-200 hover:-translate-y-px hover:border-primary hover:bg-market-soft" type="button" aria-label="Lihat Favorit" title="Wishlist">
+                    <svg class="h-[18px] w-[18px] text-primary transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span>Favorit</span>
+                    <span class="inline-flex h-5 min-w-[20px] items-center justify-center rounded-[10px] bg-primary px-1.5 text-[11px] font-bold leading-none text-white" id="wishlist-badge">0</span>
+                </button>
+                <button class="group inline-flex cursor-pointer items-center gap-2 rounded-[999px] border-[1.5px] border-market-line bg-white px-4 py-2 text-[13px] font-semibold text-ink transition-all duration-200 hover:-translate-y-px hover:border-primary hover:bg-market-soft" type="button" aria-label="Lihat Keranjang Belanja" title="Keranjang">
+                    <svg class="h-[18px] w-[18px] text-primary transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span>Keranjang</span>
+                    <span class="inline-flex h-5 min-w-[20px] items-center justify-center rounded-[10px] bg-primary px-1.5 text-[11px] font-bold leading-none text-white" id="cart-badge">0</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="relative overflow-hidden bg-[linear-gradient(135deg,#E8F0E2_0%,#DDECD5_100%)] pb-16 pt-14 before:pointer-events-none before:absolute before:-right-20 before:-top-20 before:h-80 before:w-80 before:rounded-[50%] before:bg-[radial-gradient(circle,rgba(167,201,87,0.25)_0%,rgba(255,255,255,0)_70%)] before:content-[''] lg-down:pb-12 lg-down:pt-10" aria-labelledby="hero-title">
+            <div class="mx-auto w-page mobile:w-page-sm grid grid-cols-[1.15fr_0.85fr] items-center gap-12 lg-down:grid-cols-[1fr] lg-down:gap-9">
+                <div class="flex max-w-[580px] flex-col gap-[18px] lg-down:max-w-full">
+                    <p class="text-[11px] font-extrabold uppercase leading-[1.5] text-primary mb-2 tracking-[1.6px]">Marketplace Ramah Lingkungan</p>
+                    <h1 class="my-[0.67em] text-[clamp(32px,3.8vw,46px)] font-extrabold leading-[1.15] tracking-[-1.2px] text-market-dark sm-down:text-[28px]" id="hero-title">
+                        SAMPAH PLASTIK,<br>
+                        JADI PRODUK BERMANFAAT.
+                    </h1>
+                    <p class="my-[1em] text-[15px] leading-[1.7] text-muted">
+                        Temukan produk kreatif dari plastik daur ulang
+                        dan ikut menjaga lingkungan bersama kami.
+                    </p>
+                    <a href="#produk-pilihan" class="inline-flex w-fit items-center gap-2.5 rounded-[999px] bg-primary px-7 py-[13px] text-[14px] font-bold text-white shadow-[0_8px_20px_rgba(58,125,68,0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-market-dark hover:shadow-[0_12px_24px_rgba(58,125,68,0.32)]">Jelajahi Produk <span aria-hidden="true">→</span></a>
+
+                    <ul class="mb-[1em] mt-3.5 flex flex-wrap gap-7 border-t border-[rgba(58,125,68,0.15)] pl-10 pt-5 sm-down:flex-col sm-down:gap-3.5">
+                        <li class="flex items-center gap-3 text-[13px] text-ink">
+                            <span class="grid h-[42px] w-[42px] shrink-0 place-items-center rounded-full bg-white text-primary shadow-[0_4px_12px_rgba(58,125,68,0.12)]" aria-hidden="true">
+                                <svg class="h-[22px] w-[22px] fill-none stroke-primary" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 3 20 9h-3l3 5m-4-11L12 9h3l-3 5m8-1 5 3-3 2m-2-5 2 4 3-1m-5 1v6m0-6-3 1m3 5h-7l1.5-2.5m5.5 2.5 1.5 2.5h-7m.5-5-3-1m3 1-1.5 2.5"></path>
+                                </svg>
+                            </span>
+                            <span class="leading-[1.35]"><strong class="block text-[14px] text-market-dark">100%</strong><br>Daur Ulang Plastik</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-[13px] text-ink">
+                            <span class="grid h-[42px] w-[42px] shrink-0 place-items-center rounded-full bg-white text-primary shadow-[0_4px_12px_rgba(58,125,68,0.12)]" aria-hidden="true">
+                                <svg class="h-[22px] w-[22px] fill-primary" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A9.49 9.49 0 0 0 12 21c6.08 0 10-4.92 10-11 0-.68-.05-1.35-.16-2H17zm-5 11c-2.8 0-5.18-1.57-6.38-3.87 1.44-3.52 4.14-6.84 8.78-7.98-.34 6.78-3.53 11.85-2.4 11.85z"></path>
+                                </svg>
+                            </span>
+                            <span class="leading-[1.35]"><strong class="block text-[14px] text-market-dark">Produk Unik</strong><br>dan Kreatif</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-[13px] text-ink">
+                            <span class="grid h-[42px] w-[42px] shrink-0 place-items-center rounded-full bg-white text-primary shadow-[0_4px_12px_rgba(58,125,68,0.12)]" aria-hidden="true">
+                                <svg class="h-[22px] w-[22px] fill-market-accent" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                                </svg>
+                            </span>
+                            <span class="leading-[1.35]"><strong class="block text-[14px] text-market-dark">Dukung</strong><br>Lingkungan</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="group relative aspect-[4/3] overflow-hidden rounded-[18px] shadow-[0_16px_36px_rgba(38,50,56,0.16)] lg-down:max-h-[380px]">
+                    <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Produk daur ulang plastik ramah lingkungan" fetchpriority="high">
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== KATEGORI ===== -->
+        <section class="mx-auto w-page mobile:w-page-sm pb-4 pt-12" aria-labelledby="kategori-title">
+            <div class="mb-6">
+                <p class="text-[11px] font-extrabold uppercase leading-[1.5] text-primary mb-1 tracking-[1.5px]">Pilihan Koleksi</p>
+                <h2 class="my-[0.83em] text-[26px] font-extrabold tracking-[-0.6px] text-ink" id="kategori-title">Kategori</h2>
+            </div>
+            <div class="flex flex-wrap gap-3 sm-down:gap-2 sm-down:overflow-x-auto sm-down:pb-1.5">
+                <button type="button" class="category-pill group inline-flex cursor-pointer items-center gap-2 rounded-[999px] border-[1.5px] border-market-line bg-white px-5 py-2.5 text-[13.5px] font-semibold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-market-soft aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-white aria-pressed:shadow-[0_6px_16px_rgba(58,125,68,0.2)] sm-down:whitespace-nowrap sm-down:px-4 sm-down:py-2 sm-down:text-[12.5px]" data-category="all" aria-pressed="true">Semua</button>
+                <button type="button" class="category-pill group inline-flex cursor-pointer items-center gap-2 rounded-[999px] border-[1.5px] border-market-line bg-white px-5 py-2.5 text-[13.5px] font-semibold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-market-soft aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-white aria-pressed:shadow-[0_6px_16px_rgba(58,125,68,0.2)] sm-down:whitespace-nowrap sm-down:px-4 sm-down:py-2 sm-down:text-[12.5px]" data-category="fashion" aria-pressed="false">Fashion <span class="text-primary transition-transform duration-200 group-hover:translate-x-[3px] group-aria-pressed:text-lime" aria-hidden="true">→</span></button>
+                <button type="button" class="category-pill group inline-flex cursor-pointer items-center gap-2 rounded-[999px] border-[1.5px] border-market-line bg-white px-5 py-2.5 text-[13.5px] font-semibold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-market-soft aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-white aria-pressed:shadow-[0_6px_16px_rgba(58,125,68,0.2)] sm-down:whitespace-nowrap sm-down:px-4 sm-down:py-2 sm-down:text-[12.5px]" data-category="rumah" aria-pressed="false">Rumah <span class="text-primary transition-transform duration-200 group-hover:translate-x-[3px] group-aria-pressed:text-lime" aria-hidden="true">→</span></button>
+                <button type="button" class="category-pill group inline-flex cursor-pointer items-center gap-2 rounded-[999px] border-[1.5px] border-market-line bg-white px-5 py-2.5 text-[13.5px] font-semibold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-market-soft aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-white aria-pressed:shadow-[0_6px_16px_rgba(58,125,68,0.2)] sm-down:whitespace-nowrap sm-down:px-4 sm-down:py-2 sm-down:text-[12.5px]" data-category="furniture" aria-pressed="false">Furniture <span class="text-primary transition-transform duration-200 group-hover:translate-x-[3px] group-aria-pressed:text-lime" aria-hidden="true">→</span></button>
+                <button type="button" class="category-pill group inline-flex cursor-pointer items-center gap-2 rounded-[999px] border-[1.5px] border-market-line bg-white px-5 py-2.5 text-[13.5px] font-semibold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-market-soft aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-white aria-pressed:shadow-[0_6px_16px_rgba(58,125,68,0.2)] sm-down:whitespace-nowrap sm-down:px-4 sm-down:py-2 sm-down:text-[12.5px]" data-category="hiasan" aria-pressed="false">Hiasan <span class="text-primary transition-transform duration-200 group-hover:translate-x-[3px] group-aria-pressed:text-lime" aria-hidden="true">→</span></button>
+                <button type="button" class="category-pill group inline-flex cursor-pointer items-center gap-2 rounded-[999px] border-[1.5px] border-market-line bg-white px-5 py-2.5 text-[13.5px] font-semibold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-market-soft aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-white aria-pressed:shadow-[0_6px_16px_rgba(58,125,68,0.2)] sm-down:whitespace-nowrap sm-down:px-4 sm-down:py-2 sm-down:text-[12.5px]" data-category="aksesoris" aria-pressed="false">Aksesoris <span class="text-primary transition-transform duration-200 group-hover:translate-x-[3px] group-aria-pressed:text-lime" aria-hidden="true">→</span></button>
+            </div>
+        </section>
+
+        <!-- ===== PRODUK PILIHAN ===== -->
+        <section class="mx-auto w-page mobile:w-page-sm pb-[72px] pt-8" id="produk-pilihan" aria-labelledby="produk-title">
+            <div class="mb-6">
+                <p class="text-[11px] font-extrabold uppercase leading-[1.5] text-primary mb-1 tracking-[1.5px]">Katalog Pilihan</p>
+                <h2 class="my-[0.83em] text-[26px] font-extrabold tracking-[-0.6px] text-ink" id="produk-title">Produk Pilihan</h2>
+            </div>
+
+            <div class="grid grid-cols-[repeat(3,1fr)] gap-7 lg-down:grid-cols-[repeat(2,1fr)] lg-down:gap-5 sm-down:grid-cols-[1fr] sm-down:gap-[18px]">
+                <article class="product-card group flex flex-col overflow-hidden rounded-[18px] border-[1.5px] border-market-line bg-white shadow-[0_10px_28px_rgba(38,50,56,0.08)] transition-[transform,box-shadow,border-color] duration-[250ms] hover:-translate-y-[5px] hover:border-primary hover:shadow-[0_16px_36px_rgba(38,50,56,0.14)]" data-category="fashion" data-name="tas belanja recycled plastic">
+                    <div class="relative aspect-[4/3] w-full overflow-hidden bg-market-card sm-down:aspect-[16/10]">
+                        <img class="h-full w-full object-cover transition-transform duration-[400ms] group-hover:scale-105" src="https://images.unsplash.com/photo-1597484661643-2f5fef640dd1?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Tas Belanja Recycled Plastic" loading="lazy">
+                        <span class="absolute left-3.5 top-3.5 rounded-[999px] bg-[rgba(23,74,74,0.88)] px-3 py-[5px] text-[11px] font-bold tracking-[0.3px] text-white backdrop-blur-[4px]">Daur Ulang PET</span>
+                    </div>
+                    <div class="flex flex-1 flex-col gap-2 p-5">
+                        <h3 class="product-card__name my-[1em] text-[16px] font-bold leading-[1.35] text-ink">Tas Belanja Recycled Plastic</h3>
+                        <p class="my-[1em] text-[18px] font-extrabold text-primary">Rp 45.000</p>
+                        <div class="mt-0.5 flex items-center gap-1.5 text-[13px] text-muted">
+                            <svg class="h-4 w-4 shrink-0 fill-[#F59E0B] text-[#F59E0B]" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                            </svg>
+                            <strong class="font-bold text-ink">4.8</strong> <span class="text-[12px]">(124 ulasan)</span>
+                        </div>
+                        <div class="mt-2.5 flex items-center gap-2.5">
+                            <button type="button" class="product-card__btn inline-flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[12px] border-[1.5px] border-transparent bg-market-soft px-4 py-2.5 text-[13px] font-bold text-market-dark transition-all duration-200 hover:bg-primary hover:text-white" aria-label="Tambah Tas Belanja ke Keranjang">+ Keranjang</button>
+                            <button type="button" class="product-card__wish-btn group/wish grid h-10 w-10 cursor-pointer place-items-center rounded-[12px] border-[1.5px] border-market-line bg-white text-muted transition-all duration-200 hover:border-[#e53935] hover:text-[#e53935] aria-pressed:border-[#e53935] aria-pressed:bg-[#ffebee] aria-pressed:text-[#e53935]" aria-label="Tambah Tas Belanja ke Favorit" aria-pressed="false" title="Favorit">
+                                <svg class="h-[18px] w-[18px] transition-all duration-200 group-aria-pressed/wish:fill-[#e53935]" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card group flex flex-col overflow-hidden rounded-[18px] border-[1.5px] border-market-line bg-white shadow-[0_10px_28px_rgba(38,50,56,0.08)] transition-[transform,box-shadow,border-color] duration-[250ms] hover:-translate-y-[5px] hover:border-primary hover:shadow-[0_16px_36px_rgba(38,50,56,0.14)]" data-category="rumah" data-name="pot tanaman recycled plastic">
+                    <div class="relative aspect-[4/3] w-full overflow-hidden bg-market-card sm-down:aspect-[16/10]">
+                        <img class="h-full w-full object-cover transition-transform duration-[400ms] group-hover:scale-105" src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Pot Tanaman Recycled Plastic" loading="lazy">
+                        <span class="absolute left-3.5 top-3.5 rounded-[999px] bg-[rgba(23,74,74,0.88)] px-3 py-[5px] text-[11px] font-bold tracking-[0.3px] text-white backdrop-blur-[4px]">Plastik HDPE</span>
+                    </div>
+                    <div class="flex flex-1 flex-col gap-2 p-5">
+                        <h3 class="product-card__name my-[1em] text-[16px] font-bold leading-[1.35] text-ink">Pot Tanaman Recycled Plastic</h3>
+                        <p class="my-[1em] text-[18px] font-extrabold text-primary">Rp 25.000</p>
+                        <div class="mt-0.5 flex items-center gap-1.5 text-[13px] text-muted">
+                            <svg class="h-4 w-4 shrink-0 fill-[#F59E0B] text-[#F59E0B]" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                            </svg>
+                            <strong class="font-bold text-ink">4.7</strong> <span class="text-[12px]">(98 ulasan)</span>
+                        </div>
+                        <div class="mt-2.5 flex items-center gap-2.5">
+                            <button type="button" class="product-card__btn inline-flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[12px] border-[1.5px] border-transparent bg-market-soft px-4 py-2.5 text-[13px] font-bold text-market-dark transition-all duration-200 hover:bg-primary hover:text-white" aria-label="Tambah Pot Tanaman ke Keranjang">+ Keranjang</button>
+                            <button type="button" class="product-card__wish-btn group/wish grid h-10 w-10 cursor-pointer place-items-center rounded-[12px] border-[1.5px] border-market-line bg-white text-muted transition-all duration-200 hover:border-[#e53935] hover:text-[#e53935] aria-pressed:border-[#e53935] aria-pressed:bg-[#ffebee] aria-pressed:text-[#e53935]" aria-label="Tambah Pot Tanaman ke Favorit" aria-pressed="false" title="Favorit">
+                                <svg class="h-[18px] w-[18px] transition-all duration-200 group-aria-pressed/wish:fill-[#e53935]" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card group flex flex-col overflow-hidden rounded-[18px] border-[1.5px] border-market-line bg-white shadow-[0_10px_28px_rgba(38,50,56,0.08)] transition-[transform,box-shadow,border-color] duration-[250ms] hover:-translate-y-[5px] hover:border-primary hover:shadow-[0_16px_36px_rgba(38,50,56,0.14)]" data-category="hiasan" data-name="lampu hias recycled plastic">
+                    <div class="relative aspect-[4/3] w-full overflow-hidden bg-market-card sm-down:aspect-[16/10]">
+                        <img class="h-full w-full object-cover transition-transform duration-[400ms] group-hover:scale-105" src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Lampu Hias Recycled Plastic" loading="lazy">
+                        <span class="absolute left-3.5 top-3.5 rounded-[999px] bg-[rgba(23,74,74,0.88)] px-3 py-[5px] text-[11px] font-bold tracking-[0.3px] text-white backdrop-blur-[4px]">Kreatif Artistik</span>
+                    </div>
+                    <div class="flex flex-1 flex-col gap-2 p-5">
+                        <h3 class="product-card__name my-[1em] text-[16px] font-bold leading-[1.35] text-ink">Lampu Hias Recycled Plastic</h3>
+                        <p class="my-[1em] text-[18px] font-extrabold text-primary">Rp 65.000</p>
+                        <div class="mt-0.5 flex items-center gap-1.5 text-[13px] text-muted">
+                            <svg class="h-4 w-4 shrink-0 fill-[#F59E0B] text-[#F59E0B]" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                            </svg>
+                            <strong class="font-bold text-ink">4.9</strong> <span class="text-[12px]">(76 ulasan)</span>
+                        </div>
+                        <div class="mt-2.5 flex items-center gap-2.5">
+                            <button type="button" class="product-card__btn inline-flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[12px] border-[1.5px] border-transparent bg-market-soft px-4 py-2.5 text-[13px] font-bold text-market-dark transition-all duration-200 hover:bg-primary hover:text-white" aria-label="Tambah Lampu Hias ke Keranjang">+ Keranjang</button>
+                            <button type="button" class="product-card__wish-btn group/wish grid h-10 w-10 cursor-pointer place-items-center rounded-[12px] border-[1.5px] border-market-line bg-white text-muted transition-all duration-200 hover:border-[#e53935] hover:text-[#e53935] aria-pressed:border-[#e53935] aria-pressed:bg-[#ffebee] aria-pressed:text-[#e53935]" aria-label="Tambah Lampu Hias ke Favorit" aria-pressed="false" title="Favorit">
+                                <svg class="h-[18px] w-[18px] transition-all duration-200 group-aria-pressed/wish:fill-[#e53935]" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card group flex flex-col overflow-hidden rounded-[18px] border-[1.5px] border-market-line bg-white shadow-[0_10px_28px_rgba(38,50,56,0.08)] transition-[transform,box-shadow,border-color] duration-[250ms] hover:-translate-y-[5px] hover:border-primary hover:shadow-[0_16px_36px_rgba(38,50,56,0.14)]" data-category="rumah" data-name="kotak penyimpanan daur ulang organizer">
+                    <div class="relative aspect-[4/3] w-full overflow-hidden bg-market-card sm-down:aspect-[16/10]">
+                        <img class="h-full w-full object-cover transition-transform duration-[400ms] group-hover:scale-105" src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Kotak Penyimpanan Daur Ulang" loading="lazy">
+                        <span class="absolute left-3.5 top-3.5 rounded-[999px] bg-[rgba(23,74,74,0.88)] px-3 py-[5px] text-[11px] font-bold tracking-[0.3px] text-white backdrop-blur-[4px]">Daur Ulang PP</span>
+                    </div>
+                    <div class="flex flex-1 flex-col gap-2 p-5">
+                        <h3 class="product-card__name my-[1em] text-[16px] font-bold leading-[1.35] text-ink">Kotak Organizer Daur Ulang</h3>
+                        <p class="my-[1em] text-[18px] font-extrabold text-primary">Rp 35.000</p>
+                        <div class="mt-0.5 flex items-center gap-1.5 text-[13px] text-muted">
+                            <svg class="h-4 w-4 shrink-0 fill-[#F59E0B] text-[#F59E0B]" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                            </svg>
+                            <strong class="font-bold text-ink">4.9</strong> <span class="text-[12px]">(85 ulasan)</span>
+                        </div>
+                        <div class="mt-2.5 flex items-center gap-2.5">
+                            <button type="button" class="product-card__btn inline-flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[12px] border-[1.5px] border-transparent bg-market-soft px-4 py-2.5 text-[13px] font-bold text-market-dark transition-all duration-200 hover:bg-primary hover:text-white" aria-label="Tambah Kotak Organizer ke Keranjang">+ Keranjang</button>
+                            <button type="button" class="product-card__wish-btn group/wish grid h-10 w-10 cursor-pointer place-items-center rounded-[12px] border-[1.5px] border-market-line bg-white text-muted transition-all duration-200 hover:border-[#e53935] hover:text-[#e53935] aria-pressed:border-[#e53935] aria-pressed:bg-[#ffebee] aria-pressed:text-[#e53935]" aria-label="Tambah Kotak Organizer ke Favorit" aria-pressed="false" title="Favorit">
+                                <svg class="h-[18px] w-[18px] transition-all duration-200 group-aria-pressed/wish:fill-[#e53935]" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card group flex flex-col overflow-hidden rounded-[18px] border-[1.5px] border-market-line bg-white shadow-[0_10px_28px_rgba(38,50,56,0.08)] transition-[transform,box-shadow,border-color] duration-[250ms] hover:-translate-y-[5px] hover:border-primary hover:shadow-[0_16px_36px_rgba(38,50,56,0.14)]" data-category="aksesoris" data-name="tempat pensil eco desk aksesoris meja">
+                    <div class="relative aspect-[4/3] w-full overflow-hidden bg-market-card sm-down:aspect-[16/10]">
+                        <img class="h-full w-full object-cover transition-transform duration-[400ms] group-hover:scale-105" src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Tempat Pensil Eco Desk" loading="lazy">
+                        <span class="absolute left-3.5 top-3.5 rounded-[999px] bg-[rgba(23,74,74,0.88)] px-3 py-[5px] text-[11px] font-bold tracking-[0.3px] text-white backdrop-blur-[4px]">Eco Desk</span>
+                    </div>
+                    <div class="flex flex-1 flex-col gap-2 p-5">
+                        <h3 class="product-card__name my-[1em] text-[16px] font-bold leading-[1.35] text-ink">Tempat Pensil Eco Desk</h3>
+                        <p class="my-[1em] text-[18px] font-extrabold text-primary">Rp 18.000</p>
+                        <div class="mt-0.5 flex items-center gap-1.5 text-[13px] text-muted">
+                            <svg class="h-4 w-4 shrink-0 fill-[#F59E0B] text-[#F59E0B]" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                            </svg>
+                            <strong class="font-bold text-ink">4.6</strong> <span class="text-[12px]">(42 ulasan)</span>
+                        </div>
+                        <div class="mt-2.5 flex items-center gap-2.5">
+                            <button type="button" class="product-card__btn inline-flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[12px] border-[1.5px] border-transparent bg-market-soft px-4 py-2.5 text-[13px] font-bold text-market-dark transition-all duration-200 hover:bg-primary hover:text-white" aria-label="Tambah Tempat Pensil ke Keranjang">+ Keranjang</button>
+                            <button type="button" class="product-card__wish-btn group/wish grid h-10 w-10 cursor-pointer place-items-center rounded-[12px] border-[1.5px] border-market-line bg-white text-muted transition-all duration-200 hover:border-[#e53935] hover:text-[#e53935] aria-pressed:border-[#e53935] aria-pressed:bg-[#ffebee] aria-pressed:text-[#e53935]" aria-label="Tambah Tempat Pensil ke Favorit" aria-pressed="false" title="Favorit">
+                                <svg class="h-[18px] w-[18px] transition-all duration-200 group-aria-pressed/wish:fill-[#e53935]" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card group flex flex-col overflow-hidden rounded-[18px] border-[1.5px] border-market-line bg-white shadow-[0_10px_28px_rgba(38,50,56,0.08)] transition-[transform,box-shadow,border-color] duration-[250ms] hover:-translate-y-[5px] hover:border-primary hover:shadow-[0_16px_36px_rgba(38,50,56,0.14)]" data-category="furniture" data-name="kursi mini plastik daur ulang eco stool">
+                    <div class="relative aspect-[4/3] w-full overflow-hidden bg-market-card sm-down:aspect-[16/10]">
+                        <img class="h-full w-full object-cover transition-transform duration-[400ms] group-hover:scale-105" src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Kursi Mini Plastik Daur Ulang" loading="lazy">
+                        <span class="absolute left-3.5 top-3.5 rounded-[999px] bg-[rgba(23,74,74,0.88)] px-3 py-[5px] text-[11px] font-bold tracking-[0.3px] text-white backdrop-blur-[4px]">Eco Furniture</span>
+                    </div>
+                    <div class="flex flex-1 flex-col gap-2 p-5">
+                        <h3 class="product-card__name my-[1em] text-[16px] font-bold leading-[1.35] text-ink">Bangku Eco Stool Recycled</h3>
+                        <p class="my-[1em] text-[18px] font-extrabold text-primary">Rp 120.000</p>
+                        <div class="mt-0.5 flex items-center gap-1.5 text-[13px] text-muted">
+                            <svg class="h-4 w-4 shrink-0 fill-[#F59E0B] text-[#F59E0B]" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                            </svg>
+                            <strong class="font-bold text-ink">5.0</strong> <span class="text-[12px]">(31 ulasan)</span>
+                        </div>
+                        <div class="mt-2.5 flex items-center gap-2.5">
+                            <button type="button" class="product-card__btn inline-flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[12px] border-[1.5px] border-transparent bg-market-soft px-4 py-2.5 text-[13px] font-bold text-market-dark transition-all duration-200 hover:bg-primary hover:text-white" aria-label="Tambah Bangku Eco Stool ke Keranjang">+ Keranjang</button>
+                            <button type="button" class="product-card__wish-btn group/wish grid h-10 w-10 cursor-pointer place-items-center rounded-[12px] border-[1.5px] border-market-line bg-white text-muted transition-all duration-200 hover:border-[#e53935] hover:text-[#e53935] aria-pressed:border-[#e53935] aria-pressed:bg-[#ffebee] aria-pressed:text-[#e53935]" aria-label="Tambah Bangku Eco Stool ke Favorit" aria-pressed="false" title="Favorit">
+                                <svg class="h-[18px] w-[18px] transition-all duration-200 group-aria-pressed/wish:fill-[#e53935]" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pesan jika produk tidak ditemukan saat dicari -->
+            <div class="px-5 py-12 text-center text-muted" id="no-products-notice" hidden>
+                <p class="my-[1em] text-[16px] font-semibold">Tidak ada produk yang cocok dengan pencarianmu.</p>
+                <p class="mb-[1em] mt-1.5 text-[13.5px]">Coba gunakan kata kunci lain atau pilih kategori "Semua".</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-ink pt-[54px] text-white mobile:pt-[31px]">
+        <div class="mx-auto w-page mobile:w-page-sm grid grid-cols-[minmax(0,1.4fr)_minmax(260px,1fr)] gap-[100px] pb-[45px] mobile:grid-cols-1 mobile:gap-6 mobile:pb-6">
+            <div>
+                <a class="inline-flex w-fit items-center gap-2 text-[22px] font-extrabold tracking-[-0.8px] mobile:gap-1.5 mobile:text-[18px] tiny:text-[16px]" href="../Dashboard/index.html"><span class="grid h-[34px] w-[34px] place-items-center rounded-b-[50%] border-2 border-current text-[24px] leading-none mobile:h-[26px] mobile:w-[26px] mobile:text-[18px] tiny:h-[23px] tiny:w-[23px] tiny:text-[16px]"
+                        aria-hidden="true">↻</span><span>Let<span class="text-lime">Cycle</span></span></a>
+                <p class="mb-[15px] mt-3 max-w-[430px] text-[13px] text-white/[0.82] mobile:max-w-[340px] mobile:text-[11px]">Menghubungkan kebiasaan baik dengan masa depan yang lebih hijau. Beli produk daur ulang dan dukung ekonomi sirkular bersama LetCycle.</p>
+                <div class="flex gap-2" aria-label="Media sosial">
+                    <a class="grid h-[26px] w-[26px] place-items-center rounded-full border border-white/[0.23] text-[10px] font-bold text-lime" href="#" aria-label="Instagram">ig</a>
+                    <a class="grid h-[26px] w-[26px] place-items-center rounded-full border border-white/[0.23] text-[10px] font-bold text-lime" href="#" aria-label="Facebook">f</a>
+                    <a class="grid h-[26px] w-[26px] place-items-center rounded-full border border-white/[0.23] text-[10px] font-bold text-lime" href="#" aria-label="TikTok">♪</a>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-[26px] pt-[7px] mobile:max-w-[390px]">
+                <div>
+                    <h2 class="mb-2.5 text-[14px] font-bold mobile:text-[11px]">Jelajahi</h2><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="../Dashboard/index.html">Home</a><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="../Lokasi/index.html">Lokasi Penukaran</a><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="index.html">Marketplace</a>
+                </div>
+                <div>
+                    <h2 class="mb-2.5 text-[14px] font-bold mobile:text-[11px]">Bantuan</h2><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="../Dashboard/index.html#tentang">Cara kerja</a><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="../Dashboard/index.html#layanan">Tentang kami</a><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="../Dashboard/index.html#kontak">Hubungi kami</a>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto w-page mobile:w-page-sm flex items-center justify-between gap-[15px] border-t border-white/[0.13] pb-[22px] pt-[18px] text-[11px] text-white/[0.76] mobile:flex-col mobile:items-start mobile:gap-1 mobile:pb-4 mobile:pt-3 mobile:text-[8px]">
+            <p>© 2025 LetCycle. Bersama menjaga bumi tetap lestari.</p>
+            <span>Dibuat dengan kepedulian untuk bumi <span class="text-lime" aria-hidden="true">♡</span></span>
+        </div>
+    </footer>
+</body>
+
+</html>
