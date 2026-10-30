@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3A7D44">
+    <meta name="description" content="Kelola setoran sampah dan dukung produk daur ulang bersama LetCycle.">
+    <title>Dashboard | LetCycle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <script type="module" src="src/component/DashboardInteractions.js"></script>
+    <script type="module" src="src/component/NavbarComponent.js"></script>
+</head>
+
+<body>
+    <!-- Navigasi utama -->
+    <header class="site-header sticky top-0 z-20 w-full bg-[linear-gradient(105deg,#1F5C2E,#3A7D44)] text-white shadow-[0_8px_20px_rgba(23,74,41,0.15)]">
+        <div class="relative mx-auto grid min-h-[72px] w-[min(100%,1200px)] grid-cols-[1fr_auto_1fr] mobile:grid-cols-[auto_1fr_auto] items-center px-7 mobile:min-h-[60px] mobile:w-full mobile:gap-2.5 mobile:px-[13px] tiny:gap-1.5 tiny:px-3.5">
+            <a class="brand inline-flex w-fit items-center gap-2 text-[23px] font-extrabold tracking-[-0.8px] text-white mobile:gap-1.5 mobile:text-[17px] mobile:tracking-[-0.5px] tiny:text-[15px]" href="#" aria-label="LetCycle, halaman utama">
+                <span>Let<span>Cycle</span></span>
+            </a>
+            <nav class="main-nav flex items-center gap-[38px] mobile:justify-self-center mobile:gap-[clamp(8px,2.8vw,17px)] tiny:gap-[7px]" aria-label="Navigasi utama">
+                <a class="nav-link relative py-6 text-[15px] font-semibold text-white transition-colors duration-[160ms] aria-[current=page]:after:absolute aria-[current=page]:after:inset-x-0 aria-[current=page]:after:bottom-[15px] aria-[current=page]:after:h-px aria-[current=page]:after:rounded-[2px] aria-[current=page]:after:bg-white aria-[current=page]:after:content-[''] mobile:py-[19px] mobile:text-[clamp(9px,2.6vw,12px)] mobile:aria-[current=page]:after:bottom-3" href="#" aria-current="page">Home</a>
+                <a class="nav-link relative py-6 text-[15px] font-semibold text-white transition-colors duration-[160ms] aria-[current=page]:after:absolute aria-[current=page]:after:inset-x-0 aria-[current=page]:after:bottom-[15px] aria-[current=page]:after:h-px aria-[current=page]:after:rounded-[2px] aria-[current=page]:after:bg-white aria-[current=page]:after:content-[''] mobile:py-[19px] mobile:text-[clamp(9px,2.6vw,12px)] mobile:aria-[current=page]:after:bottom-3" href="#">Lokasi Penukaran</a>
+                <a class="nav-link relative py-6 text-[15px] font-semibold text-white transition-colors duration-[160ms] aria-[current=page]:after:absolute aria-[current=page]:after:inset-x-0 aria-[current=page]:after:bottom-[15px] aria-[current=page]:after:h-px aria-[current=page]:after:rounded-[2px] aria-[current=page]:after:bg-white aria-[current=page]:after:content-[''] mobile:py-[19px] mobile:text-[clamp(9px,2.6vw,12px)] mobile:aria-[current=page]:after:bottom-3" href="#">Marketplace</a>
+            </nav>
+            <div class="relative flex items-center justify-self-end gap-6 text-[14px] font-bold data-[signed-in]:gap-3 mobile:gap-2 mobile:text-[10px] mobile:data-[signed-in]:gap-0 tiny:gap-1.5 tiny:text-[9px] tiny:data-[signed-in]:gap-1.5" data-navbar-auth></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero dengan GIF latar -->
+        <section class="relative isolate grid min-h-[clamp(520px,48vw,720px)] place-items-center overflow-hidden bg-teal text-center text-white mobile:min-h-[430px]" aria-labelledby="hero-title">
+            <img class="absolute inset-0 -z-10 h-full w-full object-cover object-[center_52%]" src="assets/dashboard-gif.gif" alt="" fetchpriority="high">
+            <div class="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(90deg,rgba(16,49,43,0.56),rgba(20,57,47,0.48)),linear-gradient(0deg,rgba(15,43,37,0.24),rgba(15,43,37,0.12))]"></div>
+            <div class="w-[min(100%-64px,900px)] pb-[88px] pt-[72px] mobile:w-[min(100%-38px,520px)] mobile:pb-[76px] mobile:pt-16">
+                <p class="mb-2 text-[12px] font-extrabold uppercase leading-[1.5] tracking-[1.6px] text-lime mobile:text-[10px]">Langkah kecil, dampak besar</p>
+                <h1 class="text-[clamp(58px,6vw,88px)] font-extrabold leading-[1.07] tracking-[-2.4px] [text-shadow:0_2px_18px_rgba(0,0,0,0.18)] mobile:text-[clamp(38px,10vw,52px)] mobile:tracking-[-1.8px]" id="hero-title">Ubah Sampah<br>Menjadi Uang</h1>
+                <p class="mx-auto mb-[27px] mt-[19px] max-w-[700px] text-[17px] leading-[1.8] text-white/90 mobile:mb-[22px] mobile:mt-[17px] mobile:max-w-[430px] mobile:text-[12px]">Pilah sampah dari rumah, setor dengan mudah, dan dapatkan nilai dari setiap
+                    langkah kecil untuk bumi yang lebih bersih.</p>
+                <a class="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-lg bg-lime px-7 text-[14px] font-bold text-ink shadow-[0_8px_20px_rgba(19,63,34,0.25)] transition-[transform,box-shadow] duration-[160ms] hover:-translate-y-0.5 mobile:min-h-11 mobile:px-[22px] mobile:text-[12px]" href="#">Mulai Setor Sampah <span
+                        aria-hidden="true">→</span></a>
+            </div>
+            <span class="absolute bottom-[17px] left-1/2 grid h-[27px] w-[27px] -translate-x-1/2 place-items-center rounded-full border border-white/55 text-[15px] text-white" aria-hidden="true">↓</span>
+        </section>
+
+        <section class="impact-section relative isolate bg-[#8DB38A] pb-[82px] pt-[116px] mobile:pb-[55px] mobile:pt-[101px]" aria-labelledby="impact-title" data-reveal id="tentang">
+            <div class="mx-auto w-page mobile:w-page-sm relative z-[1] rounded-[18px] bg-soft px-[42px] pb-[38px] pt-[34px] shadow-[0_12px_24px_rgba(38,50,56,0.15)] mobile:rounded-[15px] mobile:px-[17px] mobile:pb-6 mobile:pt-[25px]">
+                <p class="mb-[5px] text-center text-[12px] font-extrabold uppercase leading-[1.5] tracking-[1.6px] text-teal mobile:text-[10px]">Dampak kami</p>
+                <div class="flex items-center gap-3 text-teal mobile:gap-[9px]">
+                    <svg class="h-[27px] w-[27px] flex-[0_0_27px] stroke-primary stroke-[1.5] fill-none [stroke-linecap:round] [stroke-linejoin:round]" viewBox="0 0 32 32" aria-hidden="true">
+                        <path d="M16 3 20 9h-3l3 5m-4-11L12 9h3l-3 5m8-1 5 3-3 2m-2-5 2 4 3-1m-5 1v6m0-6-3 1m3 5h-7l1.5-2.5m5.5 2.5 1.5 2.5h-7m.5-5-3-1m3 1-1.5 2.5" />
+                    </svg>
+                    <h2 class="text-[clamp(21px,2.5vw,28px)] font-extrabold leading-[1.3] tracking-[-0.6px] mobile:text-[20px]" id="impact-title">Dampak yang sudah tercipta</h2>
+                </div>
+                <p class="mb-[23px] mt-[7px] text-center text-[13px] text-muted mobile:mb-[19px] mobile:text-[11px]">Bersama, langkah kecil kita tumbuh menjadi perubahan untuk lingkungan.</p>
+                <div class="grid grid-cols-2 gap-x-[22px] gap-y-[19px] px-4 mobile:grid-cols-1 mobile:gap-3 mobile:px-0">
+                    <article class="flex min-h-[104px] flex-col justify-center rounded-[13px] bg-paper px-6 py-[18px] text-center shadow-[0_3px_5px_rgba(38,50,56,0.18)] transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] mobile:min-h-[92px]">
+                        <strong class="font-serif text-[clamp(23px,3vw,31px)] font-semibold leading-[1.2] text-teal" data-impact-count="waste" aria-label="1.240 kilogram">0</strong>
+                        <p class="mt-[5px] text-[12px] leading-[1.45] text-muted mobile:text-[11px]">Sampah yang terkumpul sampai saat ini</p>
+                    </article>
+                    <article class="flex min-h-[104px] flex-col justify-center rounded-[13px] bg-paper px-6 py-[18px] text-center shadow-[0_3px_5px_rgba(38,50,56,0.18)] transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] mobile:min-h-[92px]">
+                        <strong class="font-serif text-[clamp(23px,3vw,31px)] font-semibold leading-[1.2] text-teal" data-impact-count="members" aria-label="350 lebih">0</strong>
+                        <p class="mt-[5px] text-[12px] leading-[1.45] text-muted mobile:text-[11px]">Pengguna aktif setiap harinya</p>
+                    </article>
+                    <article class="flex min-h-[104px] flex-col justify-center rounded-[13px] bg-paper px-6 py-[18px] text-center shadow-[0_3px_5px_rgba(38,50,56,0.18)] transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] mobile:min-h-[92px]">
+                        <strong class="font-serif text-[clamp(23px,3vw,31px)] font-semibold leading-[1.2] text-teal" data-impact-count="dropPoints" aria-label="53 titik">0</strong>
+                        <p class="mt-[5px] text-[12px] leading-[1.45] text-muted mobile:text-[11px]">Titik penukaran yang tersebar</p>
+                    </article>
+                    <article class="flex min-h-[104px] flex-col justify-center rounded-[13px] bg-paper px-6 py-[18px] text-center shadow-[0_3px_5px_rgba(38,50,56,0.18)] transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] mobile:min-h-[92px]">
+                        <strong class="font-serif text-[clamp(23px,3vw,31px)] font-semibold leading-[1.2] text-teal" data-impact-count="funds" aria-label="Rp 8,2 juta">0</strong>
+                        <p class="mt-[5px] text-[12px] leading-[1.45] text-muted mobile:text-[11px]">Dana yang terkumpul untuk pelestarian lingkungan</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <div class="flex flex-col pb-[76px] mobile:pb-12">
+            <section class="page-section [--section-bg:#FFFFFF]" aria-labelledby="how-title" data-reveal>
+                <div class="mx-auto text-center mb-8 max-w-[720px] mobile:mb-[23px]">
+                    <p class="mb-2 text-[12px] font-extrabold uppercase leading-[1.5] tracking-[1.6px] text-teal mobile:text-[10px]">Cara kerja</p>
+                    <h2 class="text-[clamp(25px,3vw,36px)] font-extrabold leading-[1.25] tracking-[-0.8px] text-ink mobile:text-[25px]" id="how-title">Tiga langkah mudah untuk mulai</h2>
+                    <p class="mt-2 text-[14px] text-muted mobile:text-[12px]">Mulai dari rumah dan jadikan sampah bermanfaat kembali.</p>
+                </div>
+                <div class="grid grid-cols-3 gap-5 mobile:grid-cols-1 mobile:gap-3">
+                    <article class="relative min-h-[205px] rounded-2xl border border-[rgba(213,226,204,0.85)] bg-white shadow-[0_8px_22px_rgba(38,50,56,0.06)] px-6 pb-[27px] pt-8 text-center transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] [&:not(:last-child)]:after:absolute [&:not(:last-child)]:after:right-[-23px] [&:not(:last-child)]:after:top-[57px] [&:not(:last-child)]:after:z-[2] [&:not(:last-child)]:after:w-[23px] [&:not(:last-child)]:after:border-t-2 [&:not(:last-child)]:after:border-dashed [&:not(:last-child)]:after:border-[rgba(58,125,68,0.4)] [&:not(:last-child)]:after:content-[''] mobile:min-h-0 mobile:px-5 mobile:py-[22px] mobile:[&:not(:last-child)]:after:hidden">
+                        <span class="absolute right-4 top-3.5 grid h-[29px] w-[29px] place-items-center rounded-full bg-primary text-[13px] font-extrabold text-white">1</span><span class="mx-auto mb-[15px] grid h-[54px] w-[54px] place-items-center rounded-full bg-soft text-[25px] text-primary mobile:mb-2.5 mobile:h-[45px] mobile:w-[45px] mobile:text-[21px]" aria-hidden="true">♧</span>
+                        <h3 class="text-[16px] font-bold text-ink">Pilah sampah</h3><p class="mt-[7px] text-[13px] leading-[1.7] text-muted">Pisahkan material yang bisa didaur ulang dari rumah.</p>
+                    </article>
+                    <article class="relative min-h-[205px] rounded-2xl border border-[rgba(213,226,204,0.85)] bg-white shadow-[0_8px_22px_rgba(38,50,56,0.06)] px-6 pb-[27px] pt-8 text-center transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] [&:not(:last-child)]:after:absolute [&:not(:last-child)]:after:right-[-23px] [&:not(:last-child)]:after:top-[57px] [&:not(:last-child)]:after:z-[2] [&:not(:last-child)]:after:w-[23px] [&:not(:last-child)]:after:border-t-2 [&:not(:last-child)]:after:border-dashed [&:not(:last-child)]:after:border-[rgba(58,125,68,0.4)] [&:not(:last-child)]:after:content-[''] mobile:min-h-0 mobile:px-5 mobile:py-[22px] mobile:[&:not(:last-child)]:after:hidden">
+                        <span class="absolute right-4 top-3.5 grid h-[29px] w-[29px] place-items-center rounded-full bg-primary text-[13px] font-extrabold text-white">2</span><span class="mx-auto mb-[15px] grid h-[54px] w-[54px] place-items-center rounded-full bg-soft text-[25px] text-primary mobile:mb-2.5 mobile:h-[45px] mobile:w-[45px] mobile:text-[21px]" aria-hidden="true">⌖</span>
+                        <h3 class="text-[16px] font-bold text-ink">Setor ke titik penukaran</h3><p class="mt-[7px] text-[13px] leading-[1.7] text-muted">Temukan titik terdekat dan serahkan sampahmu.</p>
+                    </article>
+                    <article class="relative min-h-[205px] rounded-2xl border border-[rgba(213,226,204,0.85)] bg-white shadow-[0_8px_22px_rgba(38,50,56,0.06)] px-6 pb-[27px] pt-8 text-center transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] [&:not(:last-child)]:after:absolute [&:not(:last-child)]:after:right-[-23px] [&:not(:last-child)]:after:top-[57px] [&:not(:last-child)]:after:z-[2] [&:not(:last-child)]:after:w-[23px] [&:not(:last-child)]:after:border-t-2 [&:not(:last-child)]:after:border-dashed [&:not(:last-child)]:after:border-[rgba(58,125,68,0.4)] [&:not(:last-child)]:after:content-[''] mobile:min-h-0 mobile:px-5 mobile:py-[22px] mobile:[&:not(:last-child)]:after:hidden">
+                        <span class="absolute right-4 top-3.5 grid h-[29px] w-[29px] place-items-center rounded-full bg-primary text-[13px] font-extrabold text-white">3</span><span class="mx-auto mb-[15px] grid h-[54px] w-[54px] place-items-center rounded-full bg-soft text-[25px] text-primary mobile:mb-2.5 mobile:h-[45px] mobile:w-[45px] mobile:text-[21px]" aria-hidden="true">✦</span>
+                        <h3 class="text-[16px] font-bold text-ink">Dapatkan saldo atau hadiah</h3><p class="mt-[7px] text-[13px] leading-[1.7] text-muted">Nikmati apresiasi dari kebiasaan baikmu.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section [--section-bg:#E8F0E2]" aria-labelledby="tips-title" data-reveal>
+                <div class="mx-auto text-center mb-[19px] max-w-[590px]">
+                    <p class="mb-2 text-[12px] font-extrabold uppercase leading-[1.5] tracking-[1.6px] text-teal mobile:text-[10px]">Tips memilah</p>
+                    <h2 class="text-[clamp(25px,3vw,36px)] font-extrabold leading-[1.25] tracking-[-0.8px] text-ink mobile:text-[25px]" id="tips-title">Pilah sampah untuk lingkungan yang lebih hijau</h2>
+                    <p class="mt-2 text-[14px] text-muted mobile:text-[12px]">Kebiasaan sederhana yang membuat setoranmu lebih bermanfaat.</p>
+                </div>
+                <div class="grid grid-cols-3 gap-[22px] mobile:grid-cols-1 mobile:gap-3">
+                    <article class="relative isolate flex min-h-[278px] flex-col items-stretch overflow-hidden rounded-2xl border border-[rgba(213,226,204,0.85)] bg-white shadow-[0_8px_22px_rgba(38,50,56,0.06)] p-6 transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] before:absolute before:-right-[39px] before:-top-[49px] before:-z-10 before:h-32 before:w-32 before:rotate-[24deg] before:rounded-[48%_52%_61%_39%/47%_39%_61%_53%] before:bg-soft before:opacity-80 before:content-[''] mobile:min-h-0 mobile:p-[18px]">
+                        <div class="mb-[22px] flex items-center justify-between mobile:mb-[15px]">
+                            <span class="grid h-[58px] w-[58px] flex-[0_0_58px] place-items-center rounded-[18px] bg-soft text-primary mobile:h-12 mobile:w-12 mobile:flex-[0_0_48px] mobile:rounded-[15px]" aria-hidden="true">
+                                <svg class="h-[34px] w-[34px] fill-none [stroke-linecap:round] [stroke-linejoin:round] stroke-current stroke-[1.8] mobile:h-[29px] mobile:w-[29px]" viewBox="0 0 48 48"><path d="M10 14h28M14 24h20M19 34h10"/><circle cx="17" cy="14" r="3"/><circle cx="30" cy="24" r="3"/><circle cx="23" cy="34" r="3"/></svg>
+                            </span>
+                            <span class="rounded-[999px] border border-line bg-paper px-2.5 py-1.5 text-[10px] font-extrabold tracking-[0.5px] text-teal">01 <span class="font-bold text-muted">/ PILAH</span></span>
+                        </div>
+                        <div>
+                            <h3 class="text-[15px] font-bold leading-[1.45] text-ink mobile:text-[13px]">Kenali jenis sampah</h3>
+                            <p class="mt-[7px] text-[12px] leading-[1.7] text-muted mobile:text-[11px]">Pisahkan material yang bisa didaur ulang dari sampah sisa makanan.</p>
+                        </div>
+                        <div class="mt-auto flex items-center gap-[9px] rounded-[10px] bg-paper px-3 py-[11px] text-[11px] leading-[1.45] text-muted mobile:mt-[18px]"><span class="grid h-[21px] w-[21px] flex-[0_0_21px] place-items-center rounded-full bg-primary text-[12px] font-extrabold text-white" aria-hidden="true">✓</span><span><strong class="text-teal">Contoh:</strong> botol PET, kardus, dan kaleng</span></div>
+                    </article>
+                    <article class="relative isolate flex min-h-[278px] flex-col items-stretch overflow-hidden rounded-2xl border border-[rgba(213,226,204,0.85)] bg-white shadow-[0_8px_22px_rgba(38,50,56,0.06)] p-6 transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] before:absolute before:-right-[39px] before:-top-[49px] before:-z-10 before:h-32 before:w-32 before:rotate-[24deg] before:rounded-[48%_52%_61%_39%/47%_39%_61%_53%] before:bg-soft before:opacity-80 before:content-[''] mobile:min-h-0 mobile:p-[18px]">
+                        <div class="mb-[22px] flex items-center justify-between mobile:mb-[15px]">
+                            <span class="grid h-[58px] w-[58px] flex-[0_0_58px] place-items-center rounded-[18px] bg-[#DCEBE7] text-teal mobile:h-12 mobile:w-12 mobile:flex-[0_0_48px] mobile:rounded-[15px]" aria-hidden="true">
+                                <svg class="h-[34px] w-[34px] fill-none [stroke-linecap:round] [stroke-linejoin:round] stroke-current stroke-[1.8] mobile:h-[29px] mobile:w-[29px]" viewBox="0 0 48 48"><path d="M18 10h12v5l4 4v18H14V19l4-4zM18 15h12M14 24h20"/><path d="M24 28v5m-3-3 3 3 3-3"/></svg>
+                            </span>
+                            <span class="rounded-[999px] border border-line bg-paper px-2.5 py-1.5 text-[10px] font-extrabold tracking-[0.5px] text-teal">02 <span class="font-bold text-muted">/ BERSIHKAN</span></span>
+                        </div>
+                        <div>
+                            <h3 class="text-[15px] font-bold leading-[1.45] text-ink mobile:text-[13px]">Bersihkan sebelum disetor</h3>
+                            <p class="mt-[7px] text-[12px] leading-[1.7] text-muted mobile:text-[11px]">Bilas wadah bekas dan pastikan tidak ada sisa minuman atau makanan.</p>
+                        </div>
+                        <div class="mt-auto flex items-center gap-[9px] rounded-[10px] bg-paper px-3 py-[11px] text-[11px] leading-[1.45] text-muted mobile:mt-[18px]"><span class="grid h-[21px] w-[21px] flex-[0_0_21px] place-items-center rounded-full bg-primary text-[12px] font-extrabold text-white" aria-hidden="true">✓</span><span><strong class="text-teal">Ingat:</strong> keringkan sebelum disimpan</span></div>
+                    </article>
+                    <article class="relative isolate flex min-h-[278px] flex-col items-stretch overflow-hidden rounded-2xl border border-[rgba(213,226,204,0.85)] bg-white shadow-[0_8px_22px_rgba(38,50,56,0.06)] p-6 transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] before:absolute before:-right-[39px] before:-top-[49px] before:-z-10 before:h-32 before:w-32 before:rotate-[24deg] before:rounded-[48%_52%_61%_39%/47%_39%_61%_53%] before:bg-soft before:opacity-80 before:content-[''] mobile:min-h-0 mobile:p-[18px]">
+                        <div class="mb-[22px] flex items-center justify-between mobile:mb-[15px]">
+                            <span class="grid h-[58px] w-[58px] flex-[0_0_58px] place-items-center rounded-[18px] bg-[#EEF2D9] text-[#476B2B] mobile:h-12 mobile:w-12 mobile:flex-[0_0_48px] mobile:rounded-[15px]" aria-hidden="true">
+                                <svg class="h-[34px] w-[34px] fill-none [stroke-linecap:round] [stroke-linejoin:round] stroke-current stroke-[1.8] mobile:h-[29px] mobile:w-[29px]" viewBox="0 0 48 48"><path d="M9 18h30v21H9zM9 25h30M15 18v21m18-21v21"/><path d="M18 12h12"/></svg>
+                            </span>
+                            <span class="rounded-[999px] border border-line bg-paper px-2.5 py-1.5 text-[10px] font-extrabold tracking-[0.5px] text-teal">03 <span class="font-bold text-muted">/ SIMPAN</span></span>
+                        </div>
+                        <div>
+                            <h3 class="text-[15px] font-bold leading-[1.45] text-ink mobile:text-[13px]">Simpan dengan rapi</h3>
+                            <p class="mt-[7px] text-[12px] leading-[1.7] text-muted mobile:text-[11px]">Jaga material tetap kering dan pisahkan sesuai jenisnya sampai waktu setor.</p>
+                        </div>
+                        <div class="mt-auto flex items-center gap-[9px] rounded-[10px] bg-paper px-3 py-[11px] text-[11px] leading-[1.45] text-muted mobile:mt-[18px]"><span class="grid h-[21px] w-[21px] flex-[0_0_21px] place-items-center rounded-full bg-primary text-[12px] font-extrabold text-white" aria-hidden="true">✓</span><span><strong class="text-teal">Tips:</strong> gunakan wadah terpisah</span></div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section [--section-bg:#F5F7F2]" aria-labelledby="categories-title" data-reveal id="layanan">
+                <div class="mx-auto text-center mb-[17px] max-w-[720px]">
+                    <p class="mb-2 text-[12px] font-extrabold uppercase leading-[1.5] tracking-[1.6px] text-teal mobile:text-[10px]">Material pilihan</p>
+                    <h2 class="text-[clamp(25px,3vw,36px)] font-extrabold leading-[1.25] tracking-[-0.8px] text-ink mobile:text-[25px]" id="categories-title">Kategori sampah yang diterima</h2>
+                    <p class="mt-2 text-[14px] text-muted mobile:text-[12px]">Pilih material yang sudah kamu pilah untuk mulai mengumpulkan saldo.</p>
+                </div>
+                <div class="grid grid-cols-4 gap-[15px] tablet:grid-cols-2 mobile:grid-cols-1 mobile:gap-2.5">
+                    <article class="grid min-h-[145px] grid-cols-[44px_minmax(0,1fr)] items-center gap-x-[13px] gap-y-[11px] overflow-hidden rounded-[15px] border border-line bg-[linear-gradient(145deg,#FFFFFF,#FBFCF9)] p-[18px] shadow-[0_5px_16px_rgba(38,50,56,0.045)] transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] mobile:min-h-[91px] mobile:grid-cols-[38px_minmax(0,1fr)_auto] mobile:gap-2.5 mobile:rounded-[12px] mobile:p-3.5 tiny:grid-cols-[34px_minmax(0,1fr)]">
+                        <span class="row-span-2 grid h-[42px] w-[42px] place-items-center rounded-[11px] bg-soft text-primary text-[21px] font-bold mobile:row-auto mobile:h-9 mobile:w-9 mobile:rounded-[9px] mobile:text-[18px]" aria-hidden="true">♧</span>
+                        <div><h3 class="text-[15px] font-bold leading-[1.5] mobile:text-[13px]">Plastik botol</h3><p class="mt-px text-[12px] text-muted mobile:text-[9px] mobile:leading-[1.4]">Botol PET bersih dan kering</p></div>
+                        <strong class="col-start-2 flex flex-wrap items-baseline gap-x-[3px] text-[14px] leading-[1.35] text-teal mobile:text-[12px]"><span class="w-full text-[9px] font-semibold uppercase tracking-[0.35px] text-muted mobile:text-[8px]">Nilai mulai</span>Rp 3.000<span class="text-[10px] font-medium text-muted">/kg</span></strong>
+                    </article>
+                    <article class="grid min-h-[145px] grid-cols-[44px_minmax(0,1fr)] items-center gap-x-[13px] gap-y-[11px] overflow-hidden rounded-[15px] border border-line bg-[linear-gradient(145deg,#FFFFFF,#FBFCF9)] p-[18px] shadow-[0_5px_16px_rgba(38,50,56,0.045)] transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] mobile:min-h-[91px] mobile:grid-cols-[38px_minmax(0,1fr)_auto] mobile:gap-2.5 mobile:rounded-[12px] mobile:p-3.5 tiny:grid-cols-[34px_minmax(0,1fr)]">
+                        <span class="row-span-2 grid h-[42px] w-[42px] place-items-center rounded-[11px] bg-[#F3EBDD] text-[#806038] text-[21px] font-bold mobile:row-auto mobile:h-9 mobile:w-9 mobile:rounded-[9px] mobile:text-[18px]" aria-hidden="true">▤</span>
+                        <div><h3 class="text-[15px] font-bold leading-[1.5] mobile:text-[13px]">Kertas &amp; kardus</h3><p class="mt-px text-[12px] text-muted mobile:text-[9px] mobile:leading-[1.4]">Kertas, koran, dan kardus</p></div>
+                        <strong class="col-start-2 flex flex-wrap items-baseline gap-x-[3px] text-[14px] leading-[1.35] text-teal mobile:text-[12px]"><span class="w-full text-[9px] font-semibold uppercase tracking-[0.35px] text-muted mobile:text-[8px]">Nilai mulai</span>Rp 2.000<span class="text-[10px] font-medium text-muted">/kg</span></strong>
+                    </article>
+                    <article class="grid min-h-[145px] grid-cols-[44px_minmax(0,1fr)] items-center gap-x-[13px] gap-y-[11px] overflow-hidden rounded-[15px] border border-line bg-[linear-gradient(145deg,#FFFFFF,#FBFCF9)] p-[18px] shadow-[0_5px_16px_rgba(38,50,56,0.045)] transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] mobile:min-h-[91px] mobile:grid-cols-[38px_minmax(0,1fr)_auto] mobile:gap-2.5 mobile:rounded-[12px] mobile:p-3.5 tiny:grid-cols-[34px_minmax(0,1fr)]">
+                        <span class="row-span-2 grid h-[42px] w-[42px] place-items-center rounded-[11px] bg-[#E4EEEC] text-teal text-[21px] font-bold mobile:row-auto mobile:h-9 mobile:w-9 mobile:rounded-[9px] mobile:text-[18px]" aria-hidden="true">▥</span>
+                        <div><h3 class="text-[15px] font-bold leading-[1.5] mobile:text-[13px]">Kaleng aluminium</h3><p class="mt-px text-[12px] text-muted mobile:text-[9px] mobile:leading-[1.4]">Kaleng minuman tanpa isi</p></div>
+                        <strong class="col-start-2 flex flex-wrap items-baseline gap-x-[3px] text-[14px] leading-[1.35] text-teal mobile:text-[12px]"><span class="w-full text-[9px] font-semibold uppercase tracking-[0.35px] text-muted mobile:text-[8px]">Nilai mulai</span>Rp 8.000<span class="text-[10px] font-medium text-muted">/kg</span></strong>
+                    </article>
+                    <article class="grid min-h-[145px] grid-cols-[44px_minmax(0,1fr)] items-center gap-x-[13px] gap-y-[11px] overflow-hidden rounded-[15px] border border-line bg-[linear-gradient(145deg,#FFFFFF,#FBFCF9)] p-[18px] shadow-[0_5px_16px_rgba(38,50,56,0.045)] transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] mobile:min-h-[91px] mobile:grid-cols-[38px_minmax(0,1fr)_auto] mobile:gap-2.5 mobile:rounded-[12px] mobile:p-3.5 tiny:grid-cols-[34px_minmax(0,1fr)]">
+                        <span class="row-span-2 grid h-[42px] w-[42px] place-items-center rounded-[11px] bg-[#EEF2D9] text-[#526B2D] text-[21px] font-bold mobile:row-auto mobile:h-9 mobile:w-9 mobile:rounded-[9px] mobile:text-[18px]" aria-hidden="true">◇</span>
+                        <div><h3 class="text-[15px] font-bold leading-[1.5] mobile:text-[13px]">Botol kaca</h3><p class="mt-px text-[12px] text-muted mobile:text-[9px] mobile:leading-[1.4]">Botol kaca utuh dan bersih</p></div>
+                        <strong class="col-start-2 flex flex-wrap items-baseline gap-x-[3px] text-[14px] leading-[1.35] text-teal mobile:text-[12px]"><span class="w-full text-[9px] font-semibold uppercase tracking-[0.35px] text-muted mobile:text-[8px]">Nilai mulai</span>Rp 1.500<span class="text-[10px] font-medium text-muted">/kg</span></strong>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section [--section-bg:#FFFFFF]" aria-labelledby="gallery-title" data-reveal>
+                <div class="mb-[18px] flex items-center justify-between gap-5 mobile:items-end mobile:gap-2">
+                    <div class="max-w-[720px] flex-1 text-center mobile:text-left">
+                        <p class="mb-2 text-[12px] font-extrabold uppercase leading-[1.5] tracking-[1.6px] text-teal mobile:text-[10px]">Cerita komunitas</p><h2 class="text-[clamp(25px,3vw,36px)] font-extrabold leading-[1.25] tracking-[-0.8px] text-ink mobile:text-[25px]" id="gallery-title">Kegiatan LetCycle</h2>
+                        <p class="mt-2 text-[14px] text-muted mobile:max-w-[260px] mobile:text-[12px]">Langkah kecil kita sedang membuat perubahan besar.</p>
+                    </div>
+                    <div class="flex flex-[0_0_auto] gap-2 pb-[3px] mobile:gap-[5px]">
+                        <button class="grid h-11 w-11 cursor-pointer place-items-center rounded-full bg-primary text-[19px] text-white transition-[background,transform] duration-[160ms] hover:-translate-y-px hover:bg-teal mobile:h-8 mobile:w-8 mobile:text-[14px]" type="button" data-carousel-direction="previous" aria-label="Lihat kegiatan sebelumnya">←</button>
+                        <button class="grid h-11 w-11 cursor-pointer place-items-center rounded-full bg-primary text-[19px] text-white transition-[background,transform] duration-[160ms] hover:-translate-y-px hover:bg-teal mobile:h-8 mobile:w-8 mobile:text-[14px]" type="button" data-carousel-direction="next" aria-label="Lihat kegiatan berikutnya">→</button>
+                    </div>
+                </div>
+                <div class="grid snap-x snap-mandatory auto-cols-[31%] grid-flow-col gap-5 overflow-x-auto scroll-smooth px-0.5 pb-3 pt-0.5 [scrollbar-width:none] tablet:auto-cols-[46%] mobile:auto-cols-[82%] mobile:gap-[11px] [&::-webkit-scrollbar]:hidden" id="gallery-track" aria-label="Galeri kegiatan LetCycle">
+                    <article class="gallery-card group relative h-[260px] min-w-0 snap-start overflow-hidden rounded-[17px] bg-soft shadow-[0_12px_28px_rgba(38,50,56,0.12)] transition-[box-shadow,transform] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(38,50,56,0.18)] mobile:h-[195px] mobile:rounded-[13px]"><img class="h-full w-full object-cover transition-transform duration-[250ms] group-hover:scale-[1.04]" src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Relawan memilah sampah untuk didaur ulang" loading="lazy"><span class="absolute right-[15px] top-[15px] z-[1] rounded-[999px] border border-white/45 bg-[rgba(23,74,74,0.72)] px-2.5 py-1.5 text-[10px] font-extrabold tracking-[0.4px] text-white backdrop-blur-[8px]">01 <span class="font-medium text-white/[0.72]">/ 04</span></span><div class="absolute inset-x-0 bottom-0 bg-[linear-gradient(transparent,rgba(18,38,31,0.82))] px-5 pb-5 pt-[55px] text-white"><span class="text-[11px] font-bold uppercase tracking-[0.6px] text-lime mobile:text-[9px]">Aksi komunitas</span><h3 class="mt-[3px] text-[16px] font-bold leading-[1.4]">Pilah bersama, mulai dari sekitar</h3></div></article>
+                    <article class="gallery-card group relative h-[260px] min-w-0 snap-start overflow-hidden rounded-[17px] bg-soft shadow-[0_12px_28px_rgba(38,50,56,0.12)] transition-[box-shadow,transform] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(38,50,56,0.18)] mobile:h-[195px] mobile:rounded-[13px]"><img class="h-full w-full object-cover transition-transform duration-[250ms] group-hover:scale-[1.04]" src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Botol plastik yang siap dikumpulkan dan didaur ulang" loading="lazy"><span class="absolute right-[15px] top-[15px] z-[1] rounded-[999px] border border-white/45 bg-[rgba(23,74,74,0.72)] px-2.5 py-1.5 text-[10px] font-extrabold tracking-[0.4px] text-white backdrop-blur-[8px]">02 <span class="font-medium text-white/[0.72]">/ 04</span></span><div class="absolute inset-x-0 bottom-0 bg-[linear-gradient(transparent,rgba(18,38,31,0.82))] px-5 pb-5 pt-[55px] text-white"><span class="text-[11px] font-bold uppercase tracking-[0.6px] text-lime mobile:text-[9px]">Setor sampah</span><h3 class="mt-[3px] text-[16px] font-bold leading-[1.4]">Setiap botol punya kesempatan kedua</h3></div></article>
+                    <article class="gallery-card group relative h-[260px] min-w-0 snap-start overflow-hidden rounded-[17px] bg-soft shadow-[0_12px_28px_rgba(38,50,56,0.12)] transition-[box-shadow,transform] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(38,50,56,0.18)] mobile:h-[195px] mobile:rounded-[13px]"><img class="h-full w-full object-cover transition-transform duration-[250ms] group-hover:scale-[1.04]" src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Lingkungan hijau yang dijaga bersama" loading="lazy"><span class="absolute right-[15px] top-[15px] z-[1] rounded-[999px] border border-white/45 bg-[rgba(23,74,74,0.72)] px-2.5 py-1.5 text-[10px] font-extrabold tracking-[0.4px] text-white backdrop-blur-[8px]">03 <span class="font-medium text-white/[0.72]">/ 04</span></span><div class="absolute inset-x-0 bottom-0 bg-[linear-gradient(transparent,rgba(18,38,31,0.82))] px-5 pb-5 pt-[55px] text-white"><span class="text-[11px] font-bold uppercase tracking-[0.6px] text-lime mobile:text-[9px]">Jaga bumi</span><h3 class="mt-[3px] text-[16px] font-bold leading-[1.4]">Lingkungan bersih untuk masa depan</h3></div></article>
+                    <article class="gallery-card group relative h-[260px] min-w-0 snap-start overflow-hidden rounded-[17px] bg-soft shadow-[0_12px_28px_rgba(38,50,56,0.12)] transition-[box-shadow,transform] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(38,50,56,0.18)] mobile:h-[195px] mobile:rounded-[13px]"><img class="h-full w-full object-cover transition-transform duration-[250ms] group-hover:scale-[1.04]" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&amp;fit=crop&amp;w=720&amp;q=80" alt="Anak-anak ikut merawat lingkungan dan masa depan" loading="lazy"><span class="absolute right-[15px] top-[15px] z-[1] rounded-[999px] border border-white/45 bg-[rgba(23,74,74,0.72)] px-2.5 py-1.5 text-[10px] font-extrabold tracking-[0.4px] text-white backdrop-blur-[8px]">04 <span class="font-medium text-white/[0.72]">/ 04</span></span><div class="absolute inset-x-0 bottom-0 bg-[linear-gradient(transparent,rgba(18,38,31,0.82))] px-5 pb-5 pt-[55px] text-white"><span class="text-[11px] font-bold uppercase tracking-[0.6px] text-lime mobile:text-[9px]">Generasi hijau</span><h3 class="mt-[3px] text-[16px] font-bold leading-[1.4]">Menjaga bumi untuk generasi berikutnya</h3></div></article>
+                </div>
+            </section>
+
+            <section class="page-section [--section-bg:#E8F0E2]" aria-labelledby="testimonials-title" data-reveal>
+                <div class="mx-auto text-center mb-8 max-w-[720px] mobile:mb-[23px]">
+                    <p class="mb-2 text-[12px] font-extrabold uppercase leading-[1.5] tracking-[1.6px] text-teal mobile:text-[10px]">Suara komunitas</p>
+                    <h2 class="text-[clamp(25px,3vw,36px)] font-extrabold leading-[1.25] tracking-[-0.8px] text-ink mobile:text-[25px]" id="testimonials-title">Cerita baik dari para pegiat</h2>
+                    <p class="mt-2 text-[14px] text-muted mobile:text-[12px]">Perubahan terasa lebih dekat saat dilakukan bersama.</p>
+                </div>
+                <div class="grid grid-cols-3 gap-[18px] mobile:grid-cols-1 mobile:gap-3">
+                    <article class="relative flex min-h-[235px] flex-col justify-start overflow-hidden rounded-2xl border border-[rgba(213,226,204,0.85)] bg-white shadow-[0_8px_22px_rgba(38,50,56,0.06)] p-[27px] transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] mobile:min-h-0 mobile:p-5"><span class="h-10 font-quote text-[58px] font-bold leading-none text-primary" aria-hidden="true">“</span><p class="mb-[22px] mt-2 flex-1 text-[14px] font-medium leading-[1.75] text-ink">"Sekarang memilah sampah jadi kebiasaan seru di rumah. Setorannya juga praktis."</p><div class="flex items-center gap-[11px] border-t border-soft pt-[15px] mobile:gap-2"><span class="grid h-[39px] w-[39px] place-items-center rounded-full bg-soft text-[12px] font-extrabold text-primary">RA</span><span class="grid gap-px"><strong class="text-[13px] text-ink">Rani A.</strong><span class="text-[10px] text-muted">Anggota komunitas</span></span><span class="ml-auto whitespace-nowrap text-[11px] tracking-[1px] text-[#647F2E] mobile:text-[9px] mobile:tracking-normal" aria-label="5 dari 5 bintang">★★★★★</span></div></article>
+                    <article class="relative flex min-h-[235px] flex-col justify-start overflow-hidden rounded-2xl border border-[rgba(213,226,204,0.85)] bg-white shadow-[0_8px_22px_rgba(38,50,56,0.06)] p-[27px] transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] mobile:min-h-0 mobile:p-5"><span class="h-10 font-quote text-[58px] font-bold leading-none text-primary" aria-hidden="true">“</span><p class="mb-[22px] mt-2 flex-1 text-[14px] font-medium leading-[1.75] text-ink">"Titik penukarannya mudah ditemukan, dan saya senang tahu sampah saya diolah kembali."</p><div class="flex items-center gap-[11px] border-t border-soft pt-[15px] mobile:gap-2"><span class="grid h-[39px] w-[39px] place-items-center rounded-full bg-soft text-[12px] font-extrabold text-primary">DP</span><span class="grid gap-px"><strong class="text-[13px] text-ink">Dimas P.</strong><span class="text-[10px] text-muted">Anggota komunitas</span></span><span class="ml-auto whitespace-nowrap text-[11px] tracking-[1px] text-[#647F2E] mobile:text-[9px] mobile:tracking-normal" aria-label="5 dari 5 bintang">★★★★★</span></div></article>
+                    <article class="relative flex min-h-[235px] flex-col justify-start overflow-hidden rounded-2xl border border-[rgba(213,226,204,0.85)] bg-white shadow-[0_8px_22px_rgba(38,50,56,0.06)] p-[27px] transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-1 hover:shadow-[0_13px_28px_rgba(38,50,56,0.11)] mobile:min-h-0 mobile:p-5"><span class="h-10 font-quote text-[58px] font-bold leading-none text-primary" aria-hidden="true">“</span><p class="mb-[22px] mt-2 flex-1 text-[14px] font-medium leading-[1.75] text-ink">"Sedikit demi sedikit, keluarga kami jadi lebih peduli menjaga lingkungan."</p><div class="flex items-center gap-[11px] border-t border-soft pt-[15px] mobile:gap-2"><span class="grid h-[39px] w-[39px] place-items-center rounded-full bg-soft text-[12px] font-extrabold text-primary">NS</span><span class="grid gap-px"><strong class="text-[13px] text-ink">Nadia S.</strong><span class="text-[10px] text-muted">Anggota komunitas</span></span><span class="ml-auto whitespace-nowrap text-[11px] tracking-[1px] text-[#647F2E] mobile:text-[9px] mobile:tracking-normal" aria-label="5 dari 5 bintang">★★★★★</span></div></article>
+                </div>
+            </section>
+
+            <section class="page-section cta-card overflow-hidden rounded-[20px] bg-[linear-gradient(115deg,#174A4A,#3A7D44)] !px-[54px] !py-[70px] text-center text-white mobile:!px-5 mobile:!py-[42px]" aria-labelledby="cta-title" data-reveal id="kontak">
+                <span class="absolute -left-[42px] -top-[102px] h-[170px] w-[170px] rounded-full border border-white/[0.16]" aria-hidden="true"></span>
+                <span class="absolute -bottom-[125px] -right-[70px] h-[230px] w-[230px] rounded-full border border-white/[0.16]" aria-hidden="true"></span>
+                <p class="mb-2 text-[12px] font-extrabold uppercase leading-[1.5] tracking-[1.6px] relative text-white mobile:text-[10px]">Saatnya bergerak bersama</p><h2 class="relative text-[clamp(27px,3.5vw,40px)] font-extrabold leading-[1.25] tracking-[-0.8px] mobile:text-[25px]" id="cta-title">Jadikan sampah bernilai</h2>
+                <p class="relative mx-auto mb-[18px] mt-[9px] max-w-[650px] text-[15px] text-white/90 mobile:max-w-[500px] mobile:text-[11px]">Mulai pilah sampahmu hari ini dan jadi bagian dari perubahan untuk bumi yang lebih baik.</p>
+                <button class="relative inline-flex min-h-[46px] cursor-pointer items-center justify-center gap-3 rounded-lg bg-lime px-[27px] text-[14px] font-bold text-ink transition-[transform,box-shadow] duration-[160ms] hover:-translate-y-0.5 mobile:min-h-[39px] mobile:px-[22px] mobile:text-[12px]" type="button">Daftar Sekarang <span aria-hidden="true">→</span></button>
+                <div class="relative mt-[22px] flex items-center justify-center gap-[13px] text-[11px] font-semibold text-white/[0.86] mobile:flex-wrap mobile:gap-x-2.5 mobile:gap-y-[7px] mobile:text-[10px]"><span>Mulai gratis</span><i class="h-1 w-1 rounded-full bg-lime" aria-hidden="true"></i><span>Mudah dilakukan</span><i class="h-1 w-1 rounded-full bg-lime" aria-hidden="true"></i><span>Baik untuk bumi</span></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Informasi dan tautan footer -->
+    <footer class="bg-ink pt-[54px] text-white mobile:pt-[31px]">
+        <div class="mx-auto w-page mobile:w-page-sm grid grid-cols-[minmax(0,1.4fr)_minmax(260px,1fr)] gap-[100px] pb-[45px] mobile:grid-cols-1 mobile:gap-6 mobile:pb-6">
+            <div>
+                <a class="inline-flex w-fit items-center gap-2 text-[22px] font-extrabold tracking-[-0.8px] mobile:gap-1.5 mobile:text-[18px] tiny:text-[16px]" href="#"><span class="grid h-[34px] w-[34px] place-items-center rounded-b-[50%] border-2 border-current text-[24px] leading-none mobile:h-[26px] mobile:w-[26px] mobile:text-[18px] tiny:h-[23px] tiny:w-[23px] tiny:text-[16px]"
+                        aria-hidden="true">↻</span><span>Let<span class="text-lime">Cycle</span></span></a>
+                <p class="mb-[15px] mt-3 max-w-[430px] text-[13px] text-white/[0.82] mobile:max-w-[340px] mobile:text-[11px]">Menghubungkan kebiasaan baik dengan masa depan yang lebih hijau. Pilah, setor, dan tumbuh bersama
+                    LetCycle.</p>
+                <div class="flex gap-2" aria-label="Media sosial">
+                    <a class="grid h-[26px] w-[26px] place-items-center rounded-full border border-white/[0.23] text-[10px] font-bold text-lime" href="#" aria-label="Instagram">ig</a>
+                    <a class="grid h-[26px] w-[26px] place-items-center rounded-full border border-white/[0.23] text-[10px] font-bold text-lime" href="#" aria-label="Facebook">f</a>
+                    <a class="grid h-[26px] w-[26px] place-items-center rounded-full border border-white/[0.23] text-[10px] font-bold text-lime" href="#" aria-label="TikTok">♪</a>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-[26px] pt-[7px] mobile:max-w-[390px]">
+                <div>
+                    <h2 class="mb-2.5 text-[14px] font-bold mobile:text-[11px]">Jelajahi</h2><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="#">Home</a><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="#">Marketplace</a><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="#">Maps</a>
+                </div>
+                <div>
+                    <h2 class="mb-2.5 text-[14px] font-bold mobile:text-[11px]">Bantuan</h2><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="#">Cara kerja</a><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="#">Tentang kami</a><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="#">Hubungi kami</a>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto w-page mobile:w-page-sm flex items-center justify-between gap-[15px] border-t border-white/[0.13] pb-[22px] pt-[18px] text-[11px] text-white/[0.76] mobile:flex-col mobile:items-start mobile:gap-1 mobile:pb-4 mobile:pt-3 mobile:text-[8px]">
+            <p>© 2025 LetCycle. Bersama menjaga bumi tetap lestari.</p>
+            <span>Dibuat dengan kepedulian untuk bumi <span class="text-lime" aria-hidden="true">♡</span></span>
+        </div>
+    </footer>
+</body>
+
+</html>

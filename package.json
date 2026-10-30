@@ -2,9 +2,12 @@
   "name": "letcycle",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js"
+    "start": "php -S 127.0.0.1:3000 -t public router.php",
+    "build:css": "tailwindcss -i resources/css/app.css -o public/assets/css/app.css --minify",
+    "watch:css": "tailwindcss -i resources/css/app.css -o public/assets/css/app.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
   }
 }
