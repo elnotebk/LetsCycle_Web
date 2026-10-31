@@ -15,7 +15,9 @@ abstract class FileUserListRepository extends JsonLinesRepository implements Use
     public function findByUser(int $userId): UserList
     {
         return $this->withLock(LOCK_SH, function () use ($userId): UserList {
-            foreach ($this->readAll() as $list) {
+            /** @var UserList[] $lists */
+            $lists = $this->readAll();
+            foreach ($lists as $list) {
                 if ($list->userId === $userId) {
                     return $list;
                 }
@@ -27,6 +29,7 @@ abstract class FileUserListRepository extends JsonLinesRepository implements Use
     public function update(int $userId, callable $change): UserList
     {
         return $this->withLock(LOCK_EX, function () use ($userId, $change): UserList {
+            /** @var UserList[] $lists */
             $lists = $this->readAll();
             $list = $this->createEmpty($userId);
             foreach ($lists as $index => $candidate) {

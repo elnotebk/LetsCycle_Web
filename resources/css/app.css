@@ -82,7 +82,7 @@
     }
 
     .page-section::after {
-        @apply absolute -right-[30px] top-[23px] -z-10 h-[72px] w-[110px] -rotate-[28deg] bg-lime opacity-[0.08] content-[''] mobile:right-0;
+        @apply absolute -right-[20px] top-[23px] -z-10 h-[72px] w-[110px] -rotate-[28deg] bg-lime opacity-[0.08] content-[''] mobile:right-0;
         border-radius: 68% 32% 67% 33% / 56% 44% 56% 44%;
     }
 
