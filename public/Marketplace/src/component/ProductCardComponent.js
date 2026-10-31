@@ -1,22 +1,34 @@
-import { Product } from "../models/Product.js";
-
-/** Connects one product card in the page to its product and actions. */
+/** Renders one product from the page's card template and reports its button clicks. */
 export class ProductCardComponent {
     #element;
+    #addButton;
     #wishButton;
 
-    /** Reads the product from a card and reports its button clicks. */
-    constructor(element, { onAdd, onToggleWishlist }) {
-        this.#element = element;
-        this.#wishButton = element.querySelector(".product-card__wish-btn");
-        this.product = new Product({
-            name: element.querySelector(".product-card__name")?.textContent || "Produk",
-            keywords: element.dataset.name || "",
-            category: element.dataset.category || "",
-        });
+    /** Creates a card for a product from a template element. */
+    constructor(template, product, { onAdd, onToggleWishlist }) {
+        this.product = product;
+        this.#element = template.content.firstElementChild.cloneNode(true);
+        this.#addButton = this.#element.querySelector(".product-card__btn");
+        this.#wishButton = this.#element.querySelector(".product-card__wish-btn");
 
-        element.querySelector(".product-card__btn")?.addEventListener("click", () => onAdd(this));
-        this.#wishButton?.addEventListener("click", () => onToggleWishlist(this));
+        const image = this.#element.querySelector("[data-product-image]");
+        image.src = product.imageUrl;
+        image.alt = product.imageAlt;
+        this.#setText("[data-product-label]", product.label);
+        this.#setText(".product-card__name", product.name);
+        this.#setText("[data-product-price]", product.formattedPrice);
+        this.#setText("[data-product-rating]", product.rating.toFixed(1));
+        this.#setText("[data-product-reviews]", `(${product.reviewCount} ulasan)`);
+        this.#addButton.setAttribute("aria-label", `Tambah ${product.name} ke Keranjang`);
+        this.#wishButton.setAttribute("aria-label", `Tambah ${product.name} ke Favorit`);
+
+        this.#addButton.addEventListener("click", () => onAdd(this));
+        this.#wishButton.addEventListener("click", () => onToggleWishlist(this));
+    }
+
+    /** The card's root element. */
+    get element() {
+        return this.#element;
     }
 
     /** Shows or hides the card. */
@@ -26,6 +38,16 @@ export class ProductCardComponent {
 
     /** Shows whether the product is a favorite. */
     setWishlisted(wishlisted) {
-        this.#wishButton?.setAttribute("aria-pressed", String(wishlisted));
+        this.#wishButton.setAttribute("aria-pressed", String(wishlisted));
+    }
+
+    /** Blocks the card's buttons while a change is being saved. */
+    setBusy(busy) {
+        this.#addButton.disabled = busy;
+        this.#wishButton.disabled = busy;
+    }
+
+    #setText(selector, text) {
+        this.#element.querySelector(selector).textContent = text;
     }
 }

@@ -6,8 +6,13 @@ namespace LetCycle\Core;
 
 use LetCycle\Controllers\AuthController;
 use LetCycle\Controllers\LocationController;
+use LetCycle\Controllers\ProductController;
+use LetCycle\Controllers\ShoppingController;
+use LetCycle\Repositories\FileCartRepository;
 use LetCycle\Repositories\FileLocationRepository;
+use LetCycle\Repositories\FileProductRepository;
 use LetCycle\Repositories\FileUserRepository;
+use LetCycle\Repositories\FileWishlistRepository;
 use LetCycle\Views\JsonView;
 
 /** Applies request checks, wires dependencies, and routes API calls to controllers. */
@@ -84,6 +89,20 @@ final class App
             $this->view,
             new FileLocationRepository($data),
         );
+        $products = fn (): ProductController => new ProductController(
+            $request,
+            $this->view,
+            new FileProductRepository($data),
+        );
+        $shopping = fn (): ShoppingController => new ShoppingController(
+            $request,
+            $this->view,
+            new Session($config),
+            new FileUserRepository($data),
+            new FileProductRepository($data),
+            new FileCartRepository($data),
+            new FileWishlistRepository($data),
+        );
 
         $router = new Router();
         $router->add('POST', '/api/test/register', static fn () => $auth()->register());
@@ -92,6 +111,12 @@ final class App
         $router->add('GET', '/api/test/me', static fn () => $auth()->me());
         $router->add('GET', '/api/locations', static fn () => $locations()->list());
         $router->add('GET', '/api/locations/cities', static fn () => $locations()->listCities());
+        $router->add('GET', '/api/products', static fn () => $products()->list());
+        $router->add('GET', '/api/cart', static fn () => $shopping()->cart());
+        $router->add('POST', '/api/cart/add', static fn () => $shopping()->addToCart());
+        $router->add('POST', '/api/cart/remove', static fn () => $shopping()->removeFromCart());
+        $router->add('GET', '/api/wishlist', static fn () => $shopping()->wishlist());
+        $router->add('POST', '/api/wishlist/toggle', static fn () => $shopping()->toggleWishlist());
         return $router;
     }
 }

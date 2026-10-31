@@ -1,19 +1,28 @@
-/** Tracks how many of each product the shopper has added. */
+/** Represents the account's saved cart. */
 export class Cart {
-    #quantities = new Map();
+    #items;
 
-    /** Adds one unit of a product. */
-    add(product) {
-        this.#quantities.set(product, (this.#quantities.get(product) || 0) + 1);
+    /** Creates a cart from product ids and quantities. */
+    constructor(items = []) {
+        this.#items = items;
     }
 
-    /** Each product in the cart with its quantity. */
+    /** Builds a cart from untrusted JSON data. */
+    static fromJSON(value) {
+        if (!Array.isArray(value?.items) || !value.items.every((item) =>
+            Number.isInteger(item?.productId) && Number.isInteger(item?.quantity))) {
+            throw new Error("Data keranjang dari server tidak valid.");
+        }
+        return new Cart(value.items);
+    }
+
+    /** Each saved product id with its quantity. */
     get items() {
-        return [...this.#quantities].map(([product, quantity]) => ({ product, quantity }));
+        return [...this.#items];
     }
 
     /** The total number of units in the cart. */
     get count() {
-        return [...this.#quantities.values()].reduce((total, quantity) => total + quantity, 0);
+        return this.#items.reduce((total, { quantity }) => total + quantity, 0);
     }
 }

@@ -1,3 +1,4 @@
 node_modules/
 data/*
 !data/locations.txt
+!data/products.txt

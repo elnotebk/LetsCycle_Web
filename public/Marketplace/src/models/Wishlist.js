@@ -1,21 +1,32 @@
-/** Tracks the products the shopper has marked as favorites. */
+/** Represents the account's saved favorites. */
 export class Wishlist {
-    #products = new Set();
+    #productIds;
 
-    /** Adds or removes a product, returning whether it is now a favorite. */
-    toggle(product) {
-        if (this.#products.delete(product)) return false;
-        this.#products.add(product);
-        return true;
+    /** Creates a wishlist from product ids. */
+    constructor(productIds = []) {
+        this.#productIds = productIds;
     }
 
-    /** The favorite products. */
-    get items() {
-        return [...this.#products];
+    /** Builds a wishlist from untrusted JSON data. */
+    static fromJSON(value) {
+        if (!Array.isArray(value?.productIds) || !value.productIds.every(Number.isInteger)) {
+            throw new Error("Data favorit dari server tidak valid.");
+        }
+        return new Wishlist(value.productIds);
+    }
+
+    /** The saved product ids. */
+    get productIds() {
+        return [...this.#productIds];
     }
 
     /** The number of favorite products. */
     get count() {
-        return this.#products.size;
+        return this.#productIds.length;
+    }
+
+    /** Reports whether a product is a favorite. */
+    has(productId) {
+        return this.#productIds.includes(productId);
     }
 }
