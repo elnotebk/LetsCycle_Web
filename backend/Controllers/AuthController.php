@@ -50,7 +50,7 @@ final class AuthController extends Controller
 
         $user = $this->users->create($nama, $email, $this->hasher->hash($password));
         if ($user === null) {
-            $this->view->error(409, 'Email tersebut sudah terdaftar untuk uji coba.');
+            $this->view->error(409, 'Email sudah terdaftar. Gunakan email lain atau masuk.');
             return;
         }
         $this->view->success(201, ['user' => $user]);

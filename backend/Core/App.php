@@ -73,16 +73,17 @@ final class App
     private function createRouter(Config $config, Request $request): Router
     {
         $data = $config->dataDirectory;
+        $runtime = $config->runtimeDirectory;
         $auth = fn (): AuthController => new AuthController(
             $request,
             $this->view,
             $config,
-            new FileUserRepository($data),
+            new FileUserRepository($runtime),
             new PasswordHasher(),
             new Session($config),
-            new RateLimiter("{$data}/rate-limits/login-email.json", 10, 15 * 60),
-            new RateLimiter("{$data}/rate-limits/login-address.json", 100, 15 * 60),
-            new RateLimiter("{$data}/rate-limits/register.json", 20, 60 * 60),
+            new RateLimiter("{$runtime}/rate-limits/login-email.json", 10, 15 * 60),
+            new RateLimiter("{$runtime}/rate-limits/login-address.json", 100, 15 * 60),
+            new RateLimiter("{$runtime}/rate-limits/register.json", 20, 60 * 60),
         );
         $locations = fn (): LocationController => new LocationController(
             $request,
@@ -98,10 +99,10 @@ final class App
             $request,
             $this->view,
             new Session($config),
-            new FileUserRepository($data),
+            new FileUserRepository($runtime),
             new FileProductRepository($data),
-            new FileCartRepository($data),
-            new FileWishlistRepository($data),
+            new FileCartRepository($runtime),
+            new FileWishlistRepository($runtime),
         );
 
         $router = new Router();

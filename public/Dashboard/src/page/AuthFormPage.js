@@ -38,8 +38,13 @@ export class AuthFormPage {
     }
 
     /** Moves on after the server accepts the form. */
-    onSuccess() {
+    onSuccess(_result) {
         throw new Error("onSuccess belum diimplementasikan.");
+    }
+
+    /** Shows why the server rejected the form. */
+    onError(error) {
+        this.setStatus(error.message, "error");
     }
 
     /** Binds form submission and password visibility. */
@@ -65,10 +70,9 @@ export class AuthFormPage {
 
         this.#setProcessing(true);
         try {
-            await this.submit(values);
-            this.onSuccess();
+            await this.onSuccess(await this.submit(values));
         } catch (error) {
-            this.setStatus(error.message, "error");
+            this.onError(error);
         } finally {
             this.#setProcessing(false);
         }

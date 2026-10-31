@@ -49,6 +49,7 @@ public/
   Marketplace/   Halaman katalog dan belanja
   index.php      Titik masuk aplikasi
 data/            Data awal lokasi dan produk
+.runtime/        Akun, sesi, keranjang, dan wishlist (dibuat otomatis, tidak masuk Git)
 router.php       Router untuk PHP built-in development server
 ```
 

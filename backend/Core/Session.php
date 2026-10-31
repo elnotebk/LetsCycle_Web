@@ -51,7 +51,7 @@ final class Session
 
     private function start(): void
     {
-        $directory = "{$this->config->dataDirectory}/sessions";
+        $directory = "{$this->config->runtimeDirectory}/sessions";
         if (!is_dir($directory)) {
             mkdir($directory, 0700, true);
         }

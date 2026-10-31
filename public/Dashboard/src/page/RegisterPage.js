@@ -2,6 +2,8 @@ import { AuthService } from "../services/AuthService.js";
 import { FormValidator } from "../validators/FormValidator.js";
 import { AuthFormPage } from "./AuthFormPage.js";
 
+const EMAIL_TAKEN_STATUS = 409;
+
 /** Handles the LetCycle registration page form and user feedback. */
 export class RegisterPage extends AuthFormPage {
     /** Creates a registration page controller for the account form. */
@@ -37,6 +39,15 @@ export class RegisterPage extends AuthFormPage {
 
     onSuccess() {
         window.location.assign(new URL("login.html?registered=1", import.meta.url).href);
+    }
+
+    /** Points a duplicate email error at the email field. */
+    onError(error) {
+        if (error.status === EMAIL_TAKEN_STATUS) {
+            FormValidator.renderErrors(this.form, { email: error.message });
+            return;
+        }
+        super.onError(error);
     }
 }
 

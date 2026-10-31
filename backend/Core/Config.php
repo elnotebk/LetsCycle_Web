@@ -12,6 +12,7 @@ final class Config
     /** @param string[] $allowedOrigins */
     private function __construct(
         public readonly string $dataDirectory,
+        public readonly string $runtimeDirectory,
         public readonly bool $production,
         public readonly bool $trustProxy,
         public readonly array $allowedOrigins,
@@ -28,7 +29,10 @@ final class Config
             throw new \RuntimeException('ALLOWED_ORIGINS wajib diisi saat APP_ENV=production.');
         }
 
-        return new self(dirname(__DIR__, 2) . '/data', $production, getenv('TRUST_PROXY') === 'true', $origins);
+        // Files written while running go in a dot folder, which Live Server never watches,
+        // so saving them cannot reload a page in the middle of a request.
+        $root = dirname(__DIR__, 2);
+        return new self("{$root}/data", "{$root}/.runtime", $production, getenv('TRUST_PROXY') === 'true', $origins);
     }
 
     /** Rejects Host headers outside the allowed sites to block DNS rebinding. */

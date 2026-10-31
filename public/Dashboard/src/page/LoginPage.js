@@ -2,6 +2,8 @@ import { AuthService } from "../services/AuthService.js";
 import { FormValidator } from "../validators/FormValidator.js";
 import { AuthFormPage } from "./AuthFormPage.js";
 
+const SUCCESS_MESSAGE_MILLISECONDS = 1200;
+
 /** Handles the LetCycle login page form and user feedback. */
 export class LoginPage extends AuthFormPage {
     /** Creates a login page controller for the authentication form. */
@@ -29,7 +31,10 @@ export class LoginPage extends AuthFormPage {
         return this.authService.login(values);
     }
 
-    onSuccess() {
+    /** Confirms the login, then opens the dashboard once the message has been seen. */
+    async onSuccess(user) {
+        this.setStatus(`Berhasil masuk. Selamat datang, ${user.nama}!`, "success");
+        await new Promise((resolve) => window.setTimeout(resolve, SUCCESS_MESSAGE_MILLISECONDS));
         window.location.assign(new URL("../../index.html", import.meta.url).href);
     }
 }

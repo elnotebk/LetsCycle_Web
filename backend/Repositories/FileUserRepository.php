@@ -27,6 +27,7 @@ final class FileUserRepository extends JsonLinesRepository implements UserReposi
     public function create(string $nama, string $email, string $passwordHash): ?User
     {
         return $this->withLock(LOCK_EX, function () use ($nama, $email, $passwordHash): ?User {
+            /** @var User[] $users */
             $users = $this->readAll();
             foreach ($users as $user) {
                 if ($user->email === $email) {
