@@ -1,0 +1,12 @@
+{"id":1,"nama":"TPS Purwokerto Sejahtera","alamat":"Jalan Mandiri No. 7, Klojen","telepon":"0851-2394-2840","kota":"Malang","lat":-7.9666,"lng":112.6326}
+{"id":2,"nama":"Bank Sampah Bumi Asri","alamat":"Jalan Ijen No. 18, Bareng","telepon":"0812-6401-3572","kota":"Malang","lat":-7.9731,"lng":112.6214}
+{"id":3,"nama":"Pusat Daur Ulang Tlogomas","alamat":"Jalan Raya Tlogomas No. 45","telepon":"0821-5510-7364","kota":"Malang","lat":-7.9302,"lng":112.6007}
+{"id":4,"nama":"Rumah Pilah Lowokwaru","alamat":"Jalan Kendalsari No. 12","telepon":"0857-3048-1162","kota":"Malang","lat":-7.9418,"lng":112.6175}
+{"id":5,"nama":"TPS Hijau Batu","alamat":"Jalan Diponegoro No. 29, Sisir","telepon":"0813-7284-9061","kota":"Batu","lat":-7.8701,"lng":112.5263}
+{"id":6,"nama":"Bank Sampah Apel Lestari","alamat":"Jalan Agus Salim No. 6, Temas","telepon":"0822-1657-4390","kota":"Batu","lat":-7.8837,"lng":112.5412}
+{"id":7,"nama":"Sentra Daur Ulang Surabaya Barat","alamat":"Jalan Raya Darmo Permai III No. 20","telepon":"0812-8842-1736","kota":"Surabaya","lat":-7.2874,"lng":112.6758}
+{"id":8,"nama":"Bank Sampah Kalirungkut","alamat":"Jalan Rungkut Asri Timur No. 9","telepon":"0856-1923-8047","kota":"Surabaya","lat":-7.3228,"lng":112.7807}
+{"id":9,"nama":"TPS Ramah Lingkungan Wonokromo","alamat":"Jalan Jagir Wonokromo No. 31","telepon":"0819-6402-5173","kota":"Surabaya","lat":-7.3029,"lng":112.7383}
+{"id":10,"nama":"Pusat Pilah Sampah Sidoarjo","alamat":"Jalan Diponegoro No. 54, Sidokare","telepon":"0821-3760-9428","kota":"Sidoarjo","lat":-7.4548,"lng":112.7174}
+{"id":11,"nama":"Bank Sampah Delta Hijau","alamat":"Jalan Raya Taman No. 17, Taman","telepon":"0852-1175-6830","kota":"Sidoarjo","lat":-7.3479,"lng":112.7115}
+{"id":12,"nama":"Rumah Daur Ulang Buduran","alamat":"Jalan Raya Buduran No. 42","telepon":"0813-2594-7086","kota":"Sidoarjo","lat":-7.4261,"lng":112.7202}

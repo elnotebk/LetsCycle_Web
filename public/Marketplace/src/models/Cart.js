@@ -7,6 +7,11 @@ export class Cart {
         this.#quantities.set(product, (this.#quantities.get(product) || 0) + 1);
     }
 
+    /** Each product in the cart with its quantity. */
+    get items() {
+        return [...this.#quantities].map(([product, quantity]) => ({ product, quantity }));
+    }
+
     /** The total number of units in the cart. */
     get count() {
         return [...this.#quantities.values()].reduce((total, quantity) => total + quantity, 0);

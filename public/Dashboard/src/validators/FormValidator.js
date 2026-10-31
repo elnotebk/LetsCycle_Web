@@ -4,8 +4,8 @@ export class FormValidator {
     static validateRegistration(formData) {
         const nama = String(formData.get("nama") || "").trim();
         const email = String(formData.get("email") || "").trim().toLowerCase();
-        const password = String(formData.get("password") || "").trim();
-        const konfirmasiPassword = String(formData.get("konfirmasiPassword") || "").trim();
+        const password = String(formData.get("password") || "");
+        const konfirmasiPassword = String(formData.get("konfirmasiPassword") || "");
         const errors = {};
 
         if (nama.length < 2 || nama.length > 60) {
@@ -21,16 +21,13 @@ export class FormValidator {
             errors.konfirmasiPassword = "Konfirmasi password tidak cocok.";
         }
 
-        return {
-            values: { nama, email, password, konfirmasiPassword },
-            errors,
-        };
+        return { values: { nama, email, password }, errors };
     }
 
     /** Validates login fields and returns normalized values and errors. */
     static validateLogin(formData) {
         const email = String(formData.get("email") || "").trim().toLowerCase();
-        const password = String(formData.get("password") || "").trim();
+        const password = String(formData.get("password") || "");
         const errors = {};
 
         if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {

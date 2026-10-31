@@ -26,8 +26,10 @@ final class RateLimiter
                 return false;
             }
             $entry['count']++;
-            if (count($entries) >= self::MAXIMUM_KEYS) {
-                $entries = [];
+            if (!isset($entries[$id]) && count($entries) >= self::MAXIMUM_KEYS) {
+                // Dropping the least-used key stops a flood of new keys from clearing real lockouts.
+                $counts = array_column($entries, 'count');
+                unset($entries[array_keys($entries)[array_search(min($counts), $counts, true)]]);
             }
             $entries[$id] = $entry;
             return true;

@@ -13,13 +13,16 @@ export class RegisterPage extends AuthFormPage {
         return "Daftar";
     }
 
-    /** Binds the form and validates fields as they change. */
+    /** Binds the form and validates fields the user has already edited. */
     init() {
         super.init();
+        const edited = new Set();
         this.form.querySelectorAll("[name]").forEach((field) => {
             field.addEventListener("input", () => {
+                edited.add(field.name);
                 const { errors } = this.validate(new FormData(this.form));
-                FormValidator.renderErrors(this.form, errors);
+                const visibleErrors = Object.entries(errors).filter(([name]) => edited.has(name));
+                FormValidator.renderErrors(this.form, Object.fromEntries(visibleErrors));
             });
         });
     }

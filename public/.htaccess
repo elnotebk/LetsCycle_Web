@@ -5,6 +5,11 @@ RewriteRule ^$ /Dashboard/index.html [R=302,L]
 RewriteRule ^api(/|$) index.php [L]
 
 <IfModule mod_headers.c>
+    # PHP sends these too; drop its copies so API responses don't carry them twice.
+    Header onsuccess unset X-Content-Type-Options
+    Header onsuccess unset X-Frame-Options
+    Header onsuccess unset Referrer-Policy
+    Header onsuccess unset Content-Security-Policy
     Header always set X-Content-Type-Options "nosniff"
     Header always set X-Frame-Options "DENY"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"

@@ -9,6 +9,11 @@ export class Wishlist {
         return true;
     }
 
+    /** The favorite products. */
+    get items() {
+        return [...this.#products];
+    }
+
     /** The number of favorite products. */
     get count() {
         return this.#products.size;

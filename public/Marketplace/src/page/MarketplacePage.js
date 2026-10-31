@@ -1,4 +1,5 @@
 import { ProductCardComponent } from "../component/ProductCardComponent.js";
+import { ProductPanelComponent } from "../component/ProductPanelComponent.js";
 import { ToastComponent } from "../component/ToastComponent.js";
 import { Cart } from "../models/Cart.js";
 import { Wishlist } from "../models/Wishlist.js";
@@ -26,6 +27,20 @@ export class MarketplacePage {
     );
     this.#initCategoryFilters();
     this.#initSearch();
+    this.#initPanels();
+  }
+
+  #initPanels() {
+    new ProductPanelComponent(document.querySelector('[data-product-panel="cart"]'), {
+      title: "Keranjang",
+      emptyText: "Keranjang masih kosong.",
+      getLabels: () => this.#cart.items.map(({ product, quantity }) => `${product.name} × ${quantity}`),
+    });
+    new ProductPanelComponent(document.querySelector('[data-product-panel="wishlist"]'), {
+      title: "Favorit",
+      emptyText: "Belum ada produk favorit.",
+      getLabels: () => this.#wishlist.items.map((product) => product.name),
+    });
   }
 
   #initCategoryFilters() {

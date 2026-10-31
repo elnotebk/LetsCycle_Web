@@ -43,7 +43,7 @@ if ($path === '/') {
 $root = __DIR__ . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR;
 $segments = array_values(array_filter(preg_split('~[\\\\/]+~', $path)));
 $isSafe = array_reduce($segments, static fn (bool $safe, string $segment): bool => $safe && preg_match('/^[\w-]+(?:\.[\w-]+)*$/', $segment) === 1, true);
-$file = realpath($root . implode(DIRECTORY_SEPARATOR, $segments));
+$file = $isSafe ? realpath($root . implode(DIRECTORY_SEPARATOR, $segments)) : false;
 $contentType = $contentTypes[strtolower(pathinfo($path, PATHINFO_EXTENSION))] ?? null;
 
 if (!$isSafe || $file === false || $contentType === null || !is_file($file) || !str_starts_with($file, $root)) {

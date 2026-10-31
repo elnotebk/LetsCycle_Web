@@ -42,15 +42,15 @@
                 <input type="search" id="marketplace-search-input" placeholder="Cari produk daur ulang plastik..." class="w-full rounded-[999px] border-[1.5px] border-market-line bg-market-card py-2.5 pl-11 pr-4 text-[14px] leading-[normal] text-ink outline-none transition-[border-color,box-shadow,background] duration-200 placeholder:text-[#757575] focus:border-primary focus:bg-white focus:shadow-[0_0_0_3px_rgba(58,125,68,0.15)]" aria-label="Cari produk daur ulang">
             </div>
 
-            <div class="flex items-center gap-3 sm-down:justify-end">
-                <button class="group inline-flex cursor-pointer items-center gap-2 rounded-[999px] border-[1.5px] border-market-line bg-white px-4 py-2 text-[13px] font-semibold text-ink transition-all duration-200 hover:-translate-y-px hover:border-primary hover:bg-market-soft" type="button" aria-label="Lihat Favorit" title="Wishlist">
+            <div class="relative flex items-center gap-3 sm-down:justify-end">
+                <button data-product-panel="wishlist" class="group inline-flex cursor-pointer items-center gap-2 rounded-[999px] border-[1.5px] border-market-line bg-white px-4 py-2 text-[13px] font-semibold text-ink transition-all duration-200 hover:-translate-y-px hover:border-primary hover:bg-market-soft" type="button" aria-label="Lihat Favorit" title="Wishlist">
                     <svg class="h-[18px] w-[18px] text-primary transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                     </svg>
                     <span>Favorit</span>
                     <span class="inline-flex h-5 min-w-[20px] items-center justify-center rounded-[10px] bg-primary px-1.5 text-[11px] font-bold leading-none text-white" id="wishlist-badge">0</span>
                 </button>
-                <button class="group inline-flex cursor-pointer items-center gap-2 rounded-[999px] border-[1.5px] border-market-line bg-white px-4 py-2 text-[13px] font-semibold text-ink transition-all duration-200 hover:-translate-y-px hover:border-primary hover:bg-market-soft" type="button" aria-label="Lihat Keranjang Belanja" title="Keranjang">
+                <button data-product-panel="cart" class="group inline-flex cursor-pointer items-center gap-2 rounded-[999px] border-[1.5px] border-market-line bg-white px-4 py-2 text-[13px] font-semibold text-ink transition-all duration-200 hover:-translate-y-px hover:border-primary hover:bg-market-soft" type="button" aria-label="Lihat Keranjang Belanja" title="Keranjang">
                     <svg class="h-[18px] w-[18px] text-primary transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="9" cy="21" r="1"></circle>
                         <circle cx="20" cy="21" r="1"></circle>
@@ -314,7 +314,7 @@
                     <h2 class="mb-2.5 text-[14px] font-bold mobile:text-[11px]">Jelajahi</h2><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="../Dashboard/index.html">Home</a><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="../Lokasi/index.html">Lokasi Penukaran</a><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="index.html">Marketplace</a>
                 </div>
                 <div>
-                    <h2 class="mb-2.5 text-[14px] font-bold mobile:text-[11px]">Bantuan</h2><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="../Dashboard/index.html#tentang">Cara kerja</a><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="../Dashboard/index.html#layanan">Tentang kami</a><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="../Dashboard/index.html#kontak">Hubungi kami</a>
+                    <h2 class="mb-2.5 text-[14px] font-bold mobile:text-[11px]">Bantuan</h2><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="../Dashboard/index.html#cara-kerja">Cara kerja</a><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="../Dashboard/index.html#tentang">Tentang kami</a><a class="mt-1.5 block w-fit text-[13px] text-white/[0.82] hover:text-lime mobile:text-[10px]" href="../Dashboard/index.html#kontak">Hubungi kami</a>
                 </div>
             </div>
         </div>
