@@ -34,6 +34,16 @@ Untuk membangun ulang CSS setelah mengubah sumber Tailwind:
 npm run build:css
 ```
 
+## Akun untuk testing
+
+Gunakan akun berikut untuk mencoba fitur masuk, keranjang, dan wishlist di lingkungan lokal:
+
+| Email | Password |
+|---|---|
+| `demo@letcycle.test` | `LetCycle2026` |
+
+Data akun disimpan di `.runtime/users.txt` dan tidak masuk Git. Pada hasil clone baru, daftarkan dulu akun ini dengan email dan password di atas melalui halaman Daftar.
+
 ## Struktur proyek
 
 ```text
