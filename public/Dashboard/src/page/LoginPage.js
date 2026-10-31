@@ -1,66 +1,36 @@
 import { AuthService } from "../services/AuthService.js";
 import { FormValidator } from "../validators/FormValidator.js";
+import { AuthFormPage } from "./AuthFormPage.js";
 
 /** Handles the LetCycle login page form and user feedback. */
-export class LoginPage {
-    #form;
-    #authService;
-    #submitButton;
-    #status;
-
+export class LoginPage extends AuthFormPage {
     /** Creates a login page controller for the authentication form. */
     constructor(form, authService = new AuthService()) {
-        this.#form = form;
-        this.#authService = authService;
-        this.#submitButton = form.querySelector('[type="submit"]');
-        this.#status = document.querySelector("[data-form-status]");
+        super(form, authService);
     }
 
-    /** Binds login, password visibility, and registration notice behavior. */
+    get submitLabel() {
+        return "Masuk";
+    }
+
+    /** Binds the form and shows the notice left by registration. */
     init() {
-        this.#form.addEventListener("submit", (event) => this.#handleSubmit(event));
-        this.#form.querySelectorAll("[data-toggle-password]").forEach((button) => {
-            button.addEventListener("click", () => this.#togglePassword(button));
-        });
+        super.init();
         if (new URLSearchParams(window.location.search).get("registered") === "1") {
-            this.#setStatus("Pendaftaran berhasil, silakan masuk.", "success");
+            this.setStatus("Pendaftaran berhasil, silakan masuk.", "success");
         }
     }
 
-    async #handleSubmit(event) {
-        event.preventDefault();
-        this.#setStatus("");
-        const { values, errors } = FormValidator.validateLogin(new FormData(this.#form));
-        FormValidator.renderErrors(this.#form, errors);
-        if (Object.keys(errors).length) return;
-
-        this.#setProcessing(true);
-        try {
-            await this.#authService.login(values);
-            window.location.assign(new URL("../../index.html", import.meta.url).href);
-        } catch (error) {
-            this.#setStatus(error.message, "error");
-        } finally {
-            this.#setProcessing(false);
-        }
+    validate(formData) {
+        return FormValidator.validateLogin(formData);
     }
 
-    #togglePassword(button) {
-        const input = document.getElementById(button.dataset.togglePassword);
-        const showing = input.type === "password";
-        input.type = showing ? "text" : "password";
-        button.setAttribute("aria-label", showing ? "Sembunyikan password" : "Tampilkan password");
-        button.textContent = showing ? "Sembunyikan" : "Tampilkan";
+    submit(values) {
+        return this.authService.login(values);
     }
 
-    #setProcessing(isProcessing) {
-        this.#submitButton.disabled = isProcessing;
-        this.#submitButton.textContent = isProcessing ? "Memproses..." : "Masuk";
-    }
-
-    #setStatus(message, type = "") {
-        this.#status.textContent = message;
-        this.#status.dataset.state = type;
+    onSuccess() {
+        window.location.assign(new URL("../../index.html", import.meta.url).href);
     }
 }
 

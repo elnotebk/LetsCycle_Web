@@ -8,6 +8,7 @@ export class Location {
         this.kota = kota;
         this.lat = lat;
         this.lng = lng;
+        Object.freeze(this);
     }
 
     /** Builds a location from untrusted JSON data. */

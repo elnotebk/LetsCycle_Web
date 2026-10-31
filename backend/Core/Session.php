@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LetCycle;
+namespace LetCycle\Core;
 
 /** Wraps PHP sessions in a cookie that scripts and other sites cannot use. */
 final class Session

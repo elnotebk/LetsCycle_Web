@@ -1,3 +1,4 @@
+import { User } from "../models/User.js";
 import { ApiClient } from "./ApiClient.js";
 
 /** Provides browser-side account flows for local frontend testing. */
@@ -10,13 +11,13 @@ export class AuthService {
     /** Registers test account details; the server stores only a password hash. */
     async register(details) {
         const result = await this.apiClient.post("/register", details);
-        return result.user;
+        return User.fromJSON(result.user);
     }
 
     /** Signs into a test account; the server keeps the session in a cookie. */
     async login(credentials) {
         const result = await this.apiClient.post("/login", credentials);
-        return result.user;
+        return User.fromJSON(result.user);
     }
 
     /** Ends the server session. */
@@ -27,6 +28,6 @@ export class AuthService {
     /** Returns the signed-in user, or null when signed out. */
     async getCurrentUser() {
         const result = await this.apiClient.get("/me");
-        return result.user;
+        return result.user === null ? null : User.fromJSON(result.user);
     }
 }

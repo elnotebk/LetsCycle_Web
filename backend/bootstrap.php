@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 ini_set('display_errors', '0');
 
-foreach (['ApiError', 'Config', 'Http', 'RateLimiter', 'Session', 'UserRepository', 'LocationRepository', 'AuthController', 'LocationController', 'App'] as $class) {
-    require __DIR__ . "/{$class}.php";
-}
+spl_autoload_register(static function (string $class): void {
+    $prefix = 'LetCycle\\';
+    if (str_starts_with($class, $prefix)) {
+        require __DIR__ . '/' . str_replace('\\', '/', substr($class, strlen($prefix))) . '.php';
+    }
+});

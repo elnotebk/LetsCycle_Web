@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LetCycle;
+namespace LetCycle\Core;
 
 /** Counts attempts per key in a locked file, because PHP keeps no memory between requests. */
 final class RateLimiter
