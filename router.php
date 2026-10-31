@@ -6,9 +6,10 @@ declare(strict_types=1);
 
 require __DIR__ . '/backend/bootstrap.php';
 
-use LetCycle\App;
-use LetCycle\Config;
-use LetCycle\Http;
+use LetCycle\Core\App;
+use LetCycle\Core\Config;
+use LetCycle\Core\Request;
+use LetCycle\Core\SecurityHeaders;
 
 $contentTypes = [
     'css' => 'text/css; charset=utf-8',
@@ -21,15 +22,16 @@ $contentTypes = [
     'webp' => 'image/webp',
 ];
 
-$path = rawurldecode((string) parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH));
+$request = Request::fromGlobals();
+$path = rawurldecode($request->path);
 if ($path === '/api' || str_starts_with($path, '/api/')) {
-    App::run();
+    (new App())->run();
     return;
 }
 
 $config = Config::fromEnvironment();
-Http::sendSecurityHeaders($config);
-if (!$config->isAllowedHost($_SERVER['HTTP_HOST'] ?? '')) {
+(new SecurityHeaders($config))->send();
+if (!$config->isAllowedHost($request->host)) {
     http_response_code(403);
     return;
 }

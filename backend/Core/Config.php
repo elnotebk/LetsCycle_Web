@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LetCycle;
+namespace LetCycle\Core;
 
 /** Reads deployment settings from the environment; defaults suit local development. */
 final class Config
@@ -28,7 +28,7 @@ final class Config
             throw new \RuntimeException('ALLOWED_ORIGINS wajib diisi saat APP_ENV=production.');
         }
 
-        return new self(dirname(__DIR__) . '/data', $production, getenv('TRUST_PROXY') === 'true', $origins);
+        return new self(dirname(__DIR__, 2) . '/data', $production, getenv('TRUST_PROXY') === 'true', $origins);
     }
 
     /** Rejects Host headers outside the allowed sites to block DNS rebinding. */

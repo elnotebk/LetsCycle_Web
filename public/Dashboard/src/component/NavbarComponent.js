@@ -89,17 +89,10 @@ export class NavbarComponent {
         const name = this.#createElement("span", "profile-name max-w-[150px] truncate text-white mobile:hidden", user.nama);
         const divider = this.#createElement("span", "h-7 w-px bg-white/50 mobile:hidden");
         divider.setAttribute("aria-hidden", "true");
-        const initials = user.nama
-            .trim()
-            .split(/\s+/)
-            .slice(0, 2)
-            .map((part) => part.charAt(0))
-            .join("")
-            .toUpperCase();
         const avatar = this.#createElement(
             "button",
             "profile-avatar grid h-10 w-10 cursor-pointer place-items-center rounded-full border-2 border-white/90 bg-[linear-gradient(140deg,#F7B267,#E76F51)] p-0 text-[13px] font-extrabold text-[#4A2B20] shadow-[0_3px_10px_rgba(38,50,56,0.18)] hover:-translate-y-px mobile:h-[34px] mobile:w-[34px] mobile:text-[11px]",
-            initials || "LC",
+            user.initials,
         );
         avatar.type = "button";
         avatar.setAttribute("aria-label", `Menu pengguna ${user.nama}`);

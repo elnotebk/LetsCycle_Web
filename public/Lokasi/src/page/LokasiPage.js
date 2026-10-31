@@ -72,13 +72,7 @@ export class LokasiPage {
             this.#setLocations(locations);
         } catch (error) {
             if (version !== this.#requestVersion) return;
-            this.#locations = [];
-            this.#selectedId = null;
-            this.#locationMap.setLocations([]);
-            this.#locationList.render({
-                status: "error",
-                error: error.message || "Terjadi kesalahan pada server.",
-            });
+            this.#showLoadError(error);
         }
     }
 
@@ -91,14 +85,18 @@ export class LokasiPage {
             this.#setLocations(locations);
         } catch (error) {
             if (version !== this.#requestVersion) return;
-            this.#locations = [];
-            this.#selectedId = null;
-            this.#locationMap.setLocations([]);
-            this.#locationList.render({
-                status: "error",
-                error: error.message || "Terjadi kesalahan pada server.",
-            });
+            this.#showLoadError(error);
         }
+    }
+
+    #showLoadError(error) {
+        this.#locations = [];
+        this.#selectedId = null;
+        this.#locationMap.setLocations([]);
+        this.#locationList.render({
+            status: "error",
+            error: error.message || "Terjadi kesalahan pada server.",
+        });
     }
 
     #setLocations(locations) {

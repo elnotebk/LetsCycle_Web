@@ -1,10 +1,12 @@
+import { ImpactStat } from "../models/ImpactStat.js";
+
 /** Owns dashboard scroll reveals, impact counts, and gallery controls. */
 export class DashboardInteractions {
-    #impactData = {
-        waste: { value: 1240, decimals: 0, suffix: " kg" },
-        members: { value: 350, decimals: 0, suffix: "+" },
-        dropPoints: { value: 53, decimals: 0, suffix: "" },
-        funds: { value: 8.2, decimals: 1, prefix: "Rp ", suffix: " Jt" },
+    #impactStats = {
+        waste: new ImpactStat({ value: 1240, suffix: " kg" }),
+        members: new ImpactStat({ value: 350, suffix: "+" }),
+        dropPoints: new ImpactStat({ value: 53 }),
+        funds: new ImpactStat({ value: 8.2, decimals: 1, prefix: "Rp ", suffix: " Jt" }),
     };
 
     /** Binds the dashboard's reveal, count-up, and carousel interactions. */
@@ -44,19 +46,11 @@ export class DashboardInteractions {
     }
 
     #animateImpactCount(element) {
-        const stat = this.#impactData[element.dataset.impactCount];
+        const stat = this.#impactStats[element.dataset.impactCount];
         if (!stat) return;
 
-        const format = (value) => {
-            const formatted = new Intl.NumberFormat("id-ID", {
-                minimumFractionDigits: stat.decimals,
-                maximumFractionDigits: stat.decimals,
-            }).format(value);
-            return `${stat.prefix || ""}${formatted}${stat.suffix || ""}`;
-        };
-
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            element.textContent = format(stat.value);
+            element.textContent = stat.format();
             return;
         }
 
@@ -64,11 +58,11 @@ export class DashboardInteractions {
         const update = (now) => {
             const progress = Math.min((now - startTime) / 1200, 1);
             const easedProgress = 1 - (1 - progress) ** 3;
-            element.textContent = format(stat.value * easedProgress);
+            element.textContent = stat.format(stat.value * easedProgress);
             if (progress < 1) {
                 requestAnimationFrame(update);
             } else {
-                element.textContent = format(stat.value);
+                element.textContent = stat.format();
             }
         };
         requestAnimationFrame(update);
