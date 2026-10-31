@@ -1,0 +1,2 @@
+{"id":1,"nama":"test123","email":"test123@gmail.com","passwordHash":"$argon2id$v=19$m=65536,t=4,p=1$T2JzWkQzN25WYVRYeFBkTg$u/J5G6xf4RWts9AKkZxaplSTNEg7rM9eZy4WqGfX0rg","dibuat":"2026-10-31T08:58:09Z"}
+{"id":2,"nama":"Akun Demo","email":"demo@letcycle.test","passwordHash":"$argon2id$v=19$m=65536,t=4,p=1$aHBaWHF3Nzk3U0owWUZjaw$Nx9NtRz7Y+weguJAf3IUkGvdWV8VKHKjbNxSYhNlOpc","dibuat":"2026-10-31T09:09:20Z"}
